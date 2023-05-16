@@ -1,5 +1,5 @@
 //page 1
-import "../styles/first.css"
+import "../styles/login.css"
 import React  from 'react';
 import {AiFillCar} from "react-icons/ai"
 function Home() {

@@ -1,0 +1,17 @@
+.container{
+    width:max-content;
+    max-height: max-content;
+    border: 1px solid grey;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: 8em;
+    margin-top: 8em;
+   
+  }
+  .input{
+    margin: 0.5em;
+    padding:0.5 em
+  }
+  .submit{
+   margin-left:4 em ;
+  }

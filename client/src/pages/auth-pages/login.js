@@ -1,22 +1,16 @@
 //page 1
-import "../styles/first.css"
 import React  from 'react';
+import "../styles/login.css"
 import {AiFillCar} from "react-icons/ai"
-function Home() {
+import Home from './Home';
+function Login() {
 
 
 
 
     return(
         <>
-        <nav id="home-nav"><AiFillCar size={30}/></nav>
-        <div className='row'>
-        <div className='col-md-7 text-center'>
-            <p id='p1'>Best place get a car on rent</p>
-            <p id='p2'>Let's Drive</p>
-            <a href=''>Register</a><a href=''>Admin Login</a>
-            </div>
-       
+        <Home/>
         <div className="col-md-5">
             <form>
                 <h3>Sign In To Your Account</h3>
@@ -27,9 +21,9 @@ function Home() {
                 <button id="sign-in">Sign IN</button>
             </form>
         </div>
-        </div>
+
         </>
     )
 }
 
-export default Home;
+export default Login;

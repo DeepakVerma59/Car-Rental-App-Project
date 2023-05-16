@@ -1,0 +1,66 @@
+body, html{
+    background-image: url("D:\10X Asignmnts\Car-Rental-Project\car-rental-app\src\pages\styles\images\car-rental-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    width: 100%;
+}
+.home-nav{
+    padding: 10px;
+}
+.anchor-link a {
+    margin-right: 20px;
+
+}
+.col-md-7{
+ 
+    font-size: 20px;
+    font-weight: 1000;
+    color: red;
+}
+a{
+    margin-right: 20px;
+}
+img, svg{
+    margin: 10px;
+}
+.col-md-5{
+    background-color: white;
+    background-color: white;
+    position: fixed;
+    right: 0;
+    width: 280px;
+    height: 320px;
+    border-radius: 25px;
+    padding: 20px;
+    margin-right: 90px;
+}
+input{
+    padding: 5px;
+    margin: 5px;
+}
+#forgot-password{
+    font-size: 12px;
+    position: absolute;
+    right: 38px;
+    margin: 5px;
+}
+
+h3{
+    font-size: 13px;
+}
+
+#create-account{
+    margin-right: 8px;
+    border: none;
+    color: blue;
+    background-color: white
+} 
+
+#sign-in{
+    background-color: rgb(100 100 255);
+    border-radius: 5px;
+    padding: 5px;
+    height: 35px;
+    width: 90px;
+}

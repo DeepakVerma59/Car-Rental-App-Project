@@ -1,0 +1,32 @@
+#my-bookings{
+    float: right;
+    border: none;
+    background: none;
+}
+
+#logout{
+    float:right;
+    border: none;
+    background: none;
+
+}
+#check{
+    border: none;
+    background-color: #7688f5;
+    border-radius: 5px;
+    margin-top: 80px;
+    margin-left: 200px;
+
+
+}
+.col-md-5{
+    background-color: white;
+    position: fixed;
+    margin-top: 100px;
+    width: 320px;
+    height: 320px;
+    border-radius: 25px;
+    padding: 20px;
+    margin-left: 120px;
+
+}

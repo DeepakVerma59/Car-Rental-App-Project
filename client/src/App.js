@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
 import Register from './pages/authPages/Register';
@@ -12,6 +13,7 @@ function App() {
     <Route path='/forgot-password' element={<Forgotpassword/>}/>
   </Routes>
   </>
+
 }
 
 export default App;

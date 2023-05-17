@@ -1,11 +1,13 @@
 .container{
-    width:max-content;
-    max-height: max-content;
+    width: 250px;
+    height: 380px;
     border: 1px solid grey;
+    border-radius: 20px;
     padding: 1em;
     margin-left: auto;
-    margin-right: 8em;
-    margin-top: 8em;
+    margin-right: 100px;
+    margin-top: 10px;
+    background-color: white;
    
   }
   .input{
@@ -13,5 +15,11 @@
     padding:0.5 em
   }
   .submit{
-   margin-left:4 em ;
+    margin-left: 69px;
+    background-color: rgb(81, 81, 237);
+  }
+  .sign-in{
+    border: none;
+    color: blue;
+    background-color: white;
   }

@@ -1,17 +1,19 @@
 
-// import './App.css';
-import Login from './pages/auth-pages/login';
-import Register from './pages/auth-pages/register';
-import BookingCheck from './pages/user/BookingCheck';
+import React from 'react'
+import { Route, Routes } from 'react-router-dom';
+import Register from './pages/authPages/Register';
+import Login from './pages/authPages/Login';
+import Forgotpassword from './pages/auth-pages/forgotpassword';
 
 function App() {
-  return (
-    <>
-      {/*<Login/>*/}
-      {/*<BookingCheck/>*/}
-      <Register/>
-    </>
-  );
+  return <>
+  <Routes>
+    <Route path='/register' element={<Register/>}/>
+    <Route path='/login' element={<Login/>}/>
+    <Route path='/forgot-password' element={<Forgotpassword/>}/>
+  </Routes>
+  </>
+
 }
 
 export default App;

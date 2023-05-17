@@ -60,7 +60,7 @@ h3{
 #sign-in{
     background-color: rgb(100 100 255);
     border-radius: 5px;
-    padding: 5px;
-    height: 35px;
+    padding: 0px;
+    height: 30px;
     width: 90px;
 }

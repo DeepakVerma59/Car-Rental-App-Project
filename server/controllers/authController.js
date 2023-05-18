@@ -7,7 +7,7 @@ const registerController = async(req,res)=>{
      const {name,email,contact,password} = req.body;
      if(!name){return res.send({error:"name is required"})}
      if(!email){return res.send({error:"email is required"})}
-     if(!contact){return res.send({error:"phone no. is required"})}
+     if(!contact){return res.send({error:"contact no. is required"})}
      if(!password){return res.send({error:"password is required"})}
      
      //existing user

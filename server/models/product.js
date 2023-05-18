@@ -3,59 +3,53 @@ const mongoose=require("mongoose")
 const carSchema = mongoose.Schema({
     name:{
         type:String,
-        require:true
+        required:true
     },
     number:{
         type:number
     },
     type:{
         type:String,
-        require:true
     },
     model:{
         type:String,
-        require:true
+        required:true
     },
-    milage:{
+    mileage:{
         type:String,
-        require:true
+        required:true
     },
-    image:{
-        type:String,
-        require:true
+    photo:{
+        data:Buffer,
+        contentType:String
     },
-    avalableFrom:{
+    avalaibleFrom:{
        type:String,
-       require:true
+       required:true
     },
     availableTill:{
         type:String,
-        require:true
+        required:true
     },
-    perKm:{
+    pricePerKm:{
         type:String,
-        require:true
+        required:true
     },
     description:{
         type:String,
-        require:true
+
     },
     carDetails:{
         type:String,
-        require:true
+    
     },
     Details:{
         type:String,
-        require:true
-    },
-    slug:{
-        type:String,
-        require:true,
-        lowercase:true
+    
     }
 
   
-})
+},{timestamps:true})
 
 
 module.exports=mongoose.model("carDetail",carSchema)

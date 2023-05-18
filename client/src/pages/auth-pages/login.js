@@ -5,9 +5,13 @@ import Home from '../../components/Home';
 import {useNavigate} from "react-router-dom"
 import toast from "react-hot-toast";
 import axios from 'axios';
+import { useAuth } from '../../context-api/auth-context';
+import { Link } from 'react-router-dom';
 function Login() {
 
+
     const navigate = useNavigate()
+    const[auth, setAuth]= useAuth()
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
       
@@ -15,11 +19,18 @@ function Login() {
       e.preventDefault();
      //  console.log(name,email,password,phone,address)
      try{
-      const res = await axios.post("http://localhost:5000/login",{
+      const res = await axios.post(`${process.env.REACT_APP_PORT}/login`,{
         email,password});
       if(res.data.success){
          toast.success(res.data.message);
          console.log(res.data.token)
+         setAuth({
+            ...auth,
+            user: res.data.user,
+            token: res.data.token
+        })
+        localStorage.setItem("auth", JSON.stringify(res.data));
+        navigate("/booking-check")
       }
       else{
          toast.error(res.data.message);
@@ -33,21 +44,26 @@ function Login() {
 
     return(
         <>
+        
+        <div className='main-container'>
         <Home/>
         <div className='row'>
-        <div className='col-md-7 text-center'>
-            <a href="/Register">Register</a><a href=''>Admin Login</a>
+        <div className='col-md-7 text-center div-1'>
+            <Link to="/Register">Register</Link><Link to=''>Admin Login</Link>
             </div>
         </div>
-        <div className="col-md-5">
+        <div className="col-md-5 div-2">
             <form method='post' onSubmit={submitSignin}>
-                <h3>Sign In To Your Account</h3>
+                <h3 id='sign-in-div'>Sign In To Your Account</h3><br/>
+                <label>Email</label><br/>
                 <input type='text' value={email} onChange={e=>{setEmail(e.target.value)}} placeholder='Email'/><br/>
+                <label>Password</label><br/>
                 <input type='password' value={password} onChange={e=>{setPassword(e.target.value)}} placeholder='Password'/><br/>
                 <a id="forgot-password" href="/forgot-password">Forgot Password</a><br/><br/>
-                <button id="create-account">Create Account</button>
+                <button id="create-account" >Create Account</button>
                 <button id="sign-in" type='submit'>Sign IN</button>
             </form>
+        </div>
         </div>
 
         </>

@@ -1,7 +1,8 @@
 //registration form
 import React, { useState } from 'react'
-import "../styles/register.css"
+import "../styles/login.css"
 import Home from '../../components/Home'
+
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 import toast from "react-hot-toast";
@@ -17,7 +18,7 @@ function Register() {
     e.preventDefault();
    //  console.log(name,email,password,phone,address)
    try{
-    const res = await axios.post("http://localhost:5000/register",{
+    const res = await axios.post(`${process.env.REACT_APP_PORT}/register`,{
        name,email,password,contact});
     if(res.data.success){
        toast.success(res.data.message);
@@ -35,30 +36,37 @@ function Register() {
     
   return (
     <>
+    <div className="main-container">
     <Home/>
-    <div className="container">
-    <h3>Register in your account</h3>
+      <div className='div-2-register'>
+    <h3 id=''>Register in your account</h3>
       <form action='/register' method='post' onSubmit={submitData}>
         <div>
+        <label>Name</label><br/>
         <input className="input" type='text' placeholder='Name' value={name} onChange={e=>{setName(e.target.value)}}/>
         </div>
         <div>
-        <input className="input" type='text' value={email} onChange={e=>{setEmail(e.target.value)}}/>
+        <label>Email</label><br/>
+        <input className="input" type='text' value={email} onChange={e=>{setEmail(e.target.value)}} placeholder='Email'/>
         </div>
         <div>
+        <label>Contact</label><br/>
         <input className="input" type='number' value={contact} onChange={e=>{setContact(e.target.value)}} placeholder='Contact' maxLength={10}/>
         </div>
         <div>
+        <label>Password</label><br/>
         <input className="input" type='password' value={password} onChange={e=>{setPassword(e.target.value)}} placeholder='Password'/>
         </div>
         <div>
+        <label>Confirm Password</label><br/>
         <input className="input" type='password' id='confirm password' placeholder='Confirm Password'/>
         </div>
-        <div>
+        <div><br/>
         <button className='sign-in'>Sign In</button>
-        <button className='submit' type='submit'>Register</button>
+        <button className='register' type='submit'>Register</button>
         </div>
       </form>
+      </div>
       </div>
     </>
   )

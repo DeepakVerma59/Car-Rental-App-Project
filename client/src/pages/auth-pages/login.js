@@ -1,10 +1,9 @@
 //page 1
 import React, { useState } from 'react';
 import "../styles/login.css"
-import Home from '../../components/Home';
 import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios';
-import { useAuth } from "../../contextApi/authContext";
+import { useAuth } from "../../context-api/auth-context";
 import toast from "react-hot-toast"
 
 function Login() {
@@ -47,7 +46,6 @@ function Login() {
         <>
         
         <div className='main-container'>
-        <Home/>
         <div className='row'>
         <div className='col-md-7 text-center div-1'>
             <Link to="/Register">Register</Link><Link to=''>Admin Login</Link>

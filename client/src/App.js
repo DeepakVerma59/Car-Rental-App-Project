@@ -8,7 +8,7 @@ import AdminHomePage from './pages/admin/adminHomePage';
 import AddProducts from './pages/admin/addProducts';
 import PageNotFound from './pages/PageNotFound';
 import EditProducts from './pages/admin/EditProducts';
-
+import BookingCheck from "./pages/user/BookingCheck"
 
 function App() {
   return <>

@@ -1,11 +1,12 @@
 //page 1
 import React, { useState } from 'react';
 import "../styles/login.css"
-import Home from '../../components/Home';
+//import Home from '../../components/Home';
 import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios';
 import { useAuth } from "../../contextApi/authContext";
 import toast from "react-hot-toast"
+import Home from './Home';
 
 function Login() {
 
@@ -45,7 +46,7 @@ function Login() {
 
     return (
         <>
-        
+       
         <div className='main-container'>
         <Home/>
         <div className='row'>

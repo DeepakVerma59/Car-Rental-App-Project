@@ -8,10 +8,12 @@ import AdminHomePage from './pages/admin/adminHomePage';
 import AddProducts from './pages/admin/addProducts';
 import PageNotFound from './pages/PageNotFound';
 import EditProducts from './pages/admin/EditProducts';
-
+import BookingCheck from './pages/user/BookingCheck';
+import {Toaster} from "react-hot-toast"
 
 function App() {
   return <>
+  <Toaster/>
   <Routes>
     <Route path='/register' element={<Register/>}/>
     <Route path='/' element={<Login/>}/>

@@ -1,11 +1,12 @@
 //registration form
 import React, { useState } from 'react'
 import "../styles/login.css"
-import Home from '../../components/Home'
+//import Home from '../../components/Home'
 
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 import toast from "react-hot-toast";
+import Home from './Home';
 
 function Register() {
   const navigate = useNavigate()

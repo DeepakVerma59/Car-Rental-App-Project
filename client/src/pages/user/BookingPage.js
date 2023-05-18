@@ -1,10 +1,12 @@
 import React from 'react'
 import "../styles/BookingDetails.css"
+import Header from '../admin/Header'
 
 
 function BookingPage() {
   return (
     <>
+    <Header/>
     <div>
 <div className="card  card1 ">
   <div className="card-body mx-5" >

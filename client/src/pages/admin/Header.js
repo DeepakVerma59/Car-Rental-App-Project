@@ -14,7 +14,7 @@ const Header = () => {
             user: null,
             token: ""
         })
-        localStorage.removeItem("auth");
+        localStorage.removeItem(auth);
         toast.success("logout successful")
         navigate("/")  
      }
@@ -34,6 +34,3 @@ const Header = () => {
 }
 
 export default Header
-{/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                       <li><NavLink to="/login" className="nav-link" ></NavLink></li> 
-                    </ul> */}

@@ -1,6 +1,6 @@
 import React from 'react'
 import "../styles/BookingDetails.css"
-import { Link } from 'react-router-dom';
+
 
 function BookingPage() {
   return (

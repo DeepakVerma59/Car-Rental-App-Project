@@ -9,6 +9,7 @@ import AddProducts from "./pages/admin/addProducts"
 import EditProducts from "./pages/admin/EditProducts"
 import PageNotFound from "./pages/PageNotFound"
 
+
 function App() {
   return( 
   <>
@@ -23,7 +24,7 @@ function App() {
     <Route path='*' element={<PageNotFound/>}/>
   </Routes>
   </>
-
+  )
 }
 
 export default App;

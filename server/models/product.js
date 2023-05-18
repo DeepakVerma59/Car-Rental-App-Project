@@ -6,7 +6,7 @@ const carSchema = mongoose.Schema({
         required:true
     },
     number:{
-        type:number
+        type:Number
     },
     type:{
         type:String,

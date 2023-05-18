@@ -1,9 +1,10 @@
-body, html{
-    background-image: url("D:\10X Asignmnts\Car-Rental-Project\car-rental-app\client\src\pages\styles\images\car-rental-background.png");
+.main-container{
+    background-image: url("https://images.template.net/112850/free-car-rental-background-0bkxd.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100%;
-    width: 100%;
+    width: 100vw;
+    height:100vh
 }
 .home-nav{
     padding: 10px;
@@ -12,7 +13,7 @@ body, html{
     margin-right: 20px;
 
 }
-.col-md-7{
+.div-1{
  
     font-size: 20px;
     font-weight: 1000;
@@ -24,7 +25,7 @@ a{
 img, svg{
     margin: 10px;
 }
-.col-md-5{
+.div-2{
     background-color: white;
     background-color: white;
     position: fixed;

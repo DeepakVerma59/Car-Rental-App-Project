@@ -102,6 +102,27 @@ const createProductController = async(req,res)=>{
     }
        }
 
+       //single product controller
+       const getSingleProductController = async(req,res)=>{
+        try{
+         const {id} = req.params;
+         const singleProduct = await productModel.findOne({id});
+        
+         res.status(201).send({
+            success:true,
+            message:"products",
+            singleProduct
+         })
+        }
+        catch(err){
+            console.log(err);
+            res.status(500).send({
+                success:false,
+                message:"invalid"
+            })
+        }
+        }
+
        //get photos
        const getPhotoController=async(req,res)=>{
         const {pid} = req.params;
@@ -125,4 +146,4 @@ const createProductController = async(req,res)=>{
         })
         }
 
-    module.exports = {createProductController,updateProductController,getProductController,getPhotoController,deleteProductController}
+    module.exports = {createProductController,updateProductController,getProductController,getSingleProductController,getPhotoController,deleteProductController}

@@ -17,7 +17,7 @@ function Register() {
     e.preventDefault();
    //  console.log(name,email,password,phone,address)
    try{
-    const res = await axios.post("http://localhost:5000/register",{
+    const res = await axios.post(`${process.env.REACT_APP_PORT}/register`,{
        name,email,password,contact});
     if(res.data.success){
        toast.success(res.data.message);
@@ -35,10 +35,10 @@ function Register() {
     
   return (
     <>
-    <Home/>
-    <div className="container">
+  
+    <div className=".main-container">
     <h3>Register in your account</h3>
-      <form action='/register' method='post' onSubmit={submitData}>
+      <form  className='div-2' action='/register' method='post' onSubmit={submitData}>
         <div>
         <input className="input" type='text' placeholder='Name' value={name} onChange={e=>{setName(e.target.value)}}/>
         </div>

@@ -6,7 +6,7 @@ const carSchema = mongoose.Schema({
         required:true
     },
     number:{
-        type:number
+        type:Number
     },
     type:{
         type:String,
@@ -24,11 +24,11 @@ const carSchema = mongoose.Schema({
         contentType:String
     },
     avalaibleFrom:{
-       type:String,
+       type:Date,
        required:true
     },
     availableTill:{
-        type:String,
+        type:Date,
         required:true
     },
     pricePerKm:{

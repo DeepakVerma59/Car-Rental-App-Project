@@ -1,0 +1,39 @@
+import React from 'react'
+import { Link,useNavigate } from 'react-router-dom';
+import { AiFillCar } from "react-icons/ai"
+import { useAuth } from "../../contextApi/authContext";
+import toast from "react-hot-toast"
+
+
+const Header = () => {
+    const navigate = useNavigate()
+    const [auth, setAuth] = useAuth();
+
+    const handleLogout = () => {
+        setAuth({
+            user: null,
+            token: ""
+        })
+        localStorage.removeItem("auth");
+        toast.success("logout successful")
+        navigate("/")  
+     }
+    return (
+        <>
+            <nav className="navbar navbar-light bg-light">
+                <div className="container-fluid">
+                    <Link to="/" className="navbar-brand"><AiFillCar/></Link>
+                    <form className="d-flex px-5">
+                        <button className="btn btn-outline-success" type="submit" onClick={handleLogout}>Logout</button>
+                    </form>
+                </div>
+            </nav>
+
+        </>
+    )
+}
+
+export default Header
+{/* <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                       <li><NavLink to="/login" className="nav-link" ></NavLink></li> 
+                    </ul> */}

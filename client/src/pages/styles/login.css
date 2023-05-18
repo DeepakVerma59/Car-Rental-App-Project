@@ -1,14 +1,16 @@
+body{
+    position: fixed;
+}
 .main-container{
-    background-image: url("https://images.template.net/112850/free-car-rental-background-0bkxd.jpeg");
+    background-image: url("https://www.rentacarkerala.in/wp-content/uploads/2018/10/best.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
+    background-attachment: fixed;
     min-height: 100%;
     width: 100vw;
     height:100vh
 }
-.home-nav{
-    padding: 10px;
-}
+
 .anchor-link a {
     margin-right: 20px;
 
@@ -21,7 +23,13 @@
 }
 a{
     margin-right: 20px;
+    color: rgb(243, 54, 54);
 }
+label{
+    font-weight: bolder;
+    font-size: 12px;
+}
+
 img, svg{
     margin: 10px;
 }
@@ -32,6 +40,17 @@ img, svg{
     right: 0;
     width: 280px;
     height: 320px;
+    border-radius: 25px;
+    padding: 20px;
+    margin-right: 90px;
+}
+.div-2-register{
+    background-color: white;
+    background-color: white;
+    position: fixed;
+    right: 0;
+    width: 280px;
+    height: 480px;
     border-radius: 25px;
     padding: 20px;
     margin-right: 90px;
@@ -52,10 +71,12 @@ h3{
 }
 
 #create-account{
-    margin-right: 8px;
+    margin-right: 20px;
     border: none;
     color: blue;
-    background-color: white
+    background-color: white;
+    font-size: 15px;
+    font-weight: bold;
 } 
 
 #sign-in{
@@ -63,5 +84,15 @@ h3{
     border-radius: 5px;
     padding: 0px;
     height: 30px;
-    width: 90px;
+    width: 70px;
+}
+.sign-in{
+    border: none;
+    color: blue;
+    background-color: white;
+}
+.register{
+    float: right;
+    border-radius: 6px;
+    background-color: rgb(23, 77, 239);
 }

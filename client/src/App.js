@@ -1,20 +1,17 @@
 
 import React from 'react'
 import { Route, Routes } from 'react-router-dom';
-import Login from './pages/auth-pages/login';
 import Register from './pages/auth-pages/register';
+import Login from './pages/auth-pages/login';
 import Forgotpassword from './pages/auth-pages/forgotpassword';
-import BookingCheck from './pages/user/BookingCheck';
-import AdminHomePage from './pages/admin/adminHomePage'
-import AddProducts from './pages/admin/addProducts'
-import EditProducts from './pages/admin/EditProducts'
-import PageNotFound from './pages/PageNotFound'
-import { Toaster } from 'react-hot-toast';
-import MyBookings from './pages/user/myBookings';
+import AdminHomePage from './pages/admin/adminHomePage';
+import AddProducts from './pages/admin/addProducts';
+import PageNotFound from './pages/PageNotFound';
+import EditProducts from './pages/admin/EditProducts';
+
+
 function App() {
   return <>
-
-  <Toaster/>
   <Routes>
     <Route path='/register' element={<Register/>}/>
     <Route path='/' element={<Login/>}/>

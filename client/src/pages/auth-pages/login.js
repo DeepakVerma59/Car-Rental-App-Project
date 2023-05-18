@@ -1,48 +1,49 @@
 //page 1
-import React ,{useState} from 'react';
+import React, { useState } from 'react';
 import "../styles/login.css"
 import Home from '../../components/Home';
-import {useNavigate} from "react-router-dom"
-import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios';
-import { useAuth } from '../../context-api/auth-context';
-import { Link } from 'react-router-dom';
+import { useAuth } from "../../contextApi/authContext";
+import toast from "react-hot-toast"
+
 function Login() {
 
 
     const navigate = useNavigate()
-    const[auth, setAuth]= useAuth()
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
-      
-    const submitSignin=async(e)=>{
-      e.preventDefault();
-     //  console.log(name,email,password,phone,address)
-     try{
-      const res = await axios.post(`${process.env.REACT_APP_PORT}/login`,{
-        email,password});
-      if(res.data.success){
-         toast.success(res.data.message);
-         console.log(res.data.token)
-         setAuth({
-            ...auth,
-            user: res.data.user,
-            token: res.data.token
-        })
-        localStorage.setItem("auth", JSON.stringify(res.data));
-        navigate("/booking-check")
-      }
-      else{
-         toast.error(res.data.message);
-      }
-     }
-     catch(err){
-         console.log(err);
-         toast.error("something went wrong")
-     }
-     }
+    const [auth, setAuth] = useAuth()
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-    return(
+    const submitSignin = async (e) => {
+        e.preventDefault();
+        //  console.log(name,email,password,phone,address)
+        try {
+            const res = await axios.post(`${process.env.REACT_APP_PORT}/login`, {
+                email, password
+            });
+            if (res.data.success) {
+                toast.success(res.data.message);
+                console.log(res.data.token)
+                setAuth({
+                    ...auth,
+                    user: res.data.user,
+                    token: res.data.token
+                })
+                localStorage.setItem("auth", JSON.stringify(res.data));
+                navigate("/admin-homepage")
+            }
+            else {
+                toast.error(res.data.message);
+            }
+        }
+        catch (err) {
+            console.log(err);
+            toast.error("something went wrong")
+        }
+    }
+
+    return (
         <>
         
         <div className='main-container'>

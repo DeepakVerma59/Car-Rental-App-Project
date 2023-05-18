@@ -7,9 +7,11 @@ import AdminHomePage from './pages/admin/adminHomePage';
 import AddProducts from "./pages/admin/addProducts"
 import EditProducts from "./pages/admin/EditProducts"
 import PageNotFound from "./pages/PageNotFound"
+import Register from './pages/auth-pages/register';
 
 function App() {
-  return <>
+  return( 
+  <>
   <Routes>
     <Route path='/register' element={<Register/>}/>
     <Route path='/' element={<Login/>}/>
@@ -19,8 +21,8 @@ function App() {
     <Route path='/admin-editproducts' element={<EditProducts/>}/>
     <Route path='*' element={<PageNotFound/>}/>
   </Routes>
-  </>
-
+  </> 
+  )
 }
 
 export default App;

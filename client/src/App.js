@@ -10,11 +10,11 @@ import AddProducts from "./pages/admin/addProducts"
 import EditProducts from "./pages/admin/EditProducts"
 import PageNotFound from "./pages/PageNotFound"
 import BookingCheck from "./pages/user/BookingCheck"
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
-  return( 
-  <>
+  return <>
   <Routes>
     <Route path='/register' element={<Register/>}/>
     <Route path='/' element={<Login/>}/>
@@ -22,7 +22,7 @@ function App() {
     <Route path='/forgot-password' element={<Forgotpassword/>}/>
     <Route path='/admin-homepage' element={<AdminHomePage/>}/>
     <Route path='/admin-addproducts' element={<AddProducts/>}/>
-    <Route path='/admin-editproducts' element={<EditProducts/>}/>
+    <Route path='/admin-editproducts/:id' element={<EditProducts/>}/>
     <Route path='*' element={<PageNotFound/>}/>
   </Routes>
   </>

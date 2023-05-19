@@ -10,7 +10,7 @@ const authContext = createContext();
   })
 
   useEffect(()=>{
-    const data = localStorage.getItem(auth);
+    const data = localStorage.getItem("auth");
     if(data){
         const parsedData = JSON.parse(data);
         setAuth({
@@ -19,7 +19,7 @@ const authContext = createContext();
             token:parsedData.token
         })
     }
-  },[auth]);
+  },[]);
 
   return (
     <authContext.Provider value={[auth,setAuth]}>

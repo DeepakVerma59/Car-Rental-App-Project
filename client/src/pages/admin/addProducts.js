@@ -43,9 +43,8 @@ const handleSubmit =async(e)=>{
       productData.append("details",details);
       
   const res = await axios.post(`${process.env.REACT_APP_PORT}/create-product` ,productData,
-  {headers:{
-    Authorization:`${auth?.token}`
-  }})
+  {headers:
+  {Authorization:`${auth?.token}`}})
 
   if(res.data.success){
     toast.success("product created successfully");
@@ -58,6 +57,7 @@ const handleSubmit =async(e)=>{
   catch(err){
     console.log(err)
     toast.error("something went wrong");
+    console.log(auth?.token)
   }
 }
 
@@ -121,12 +121,12 @@ const handleSubmit =async(e)=>{
               <label className="form-label">Available From</label>
               <label className="form-label label-padding3">Available Till</label>
               <div className='mb-3'>
-                <input type="date"
+                <input type="text"
                   className='form-control mb-3'
                   onChange={(e) => setAvailableFrom(e.target.value)}
                   value={availableFrom} />
 
-                <input type="date"
+                <input type="text"
                   className='form-control mb-3 box-margin'
                   onChange={(e) => setAvailableTill(e.target.value)}
                   value={availableTill} />
@@ -154,12 +154,12 @@ const handleSubmit =async(e)=>{
                   <div>
                     <img src={URL.createObjectURL(photo)}
                       alt='product-img'
-                      height={"150px"}
+                      height={"120px"}
                       className='img img-responsive' />
                   </div>
                 )}
                 <div className='mb-3'>
-                  <label className='btn btn-primary'>
+                  <label className='btn btn-primary btn-sm'>
                     {photo ? photo.name : "ADD"}
                     <input type="file" name='photo' accept="image/*"
                       onChange={(e) => setPhoto(e.target.files[0])}

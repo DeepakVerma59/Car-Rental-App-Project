@@ -28,7 +28,7 @@ function App() {
     <Route path='/forgot-password' element={<Forgotpassword/>}/>
     <Route path='/admin-homepage' element={<AdminHomePage/>}/>
     <Route path='/admin-addproducts' element={<AddProducts/>}/>
-    <Route path='/admin-editproducts' element={<EditProducts/>}/>
+    <Route path='/admin-editproducts/:id' element={<EditProducts/>}/>
     <Route path='/order-car' element={<Ordercar/>}/>
     <Route path='*' element={<PageNotFound/>}/>
   </Routes>

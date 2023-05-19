@@ -9,7 +9,6 @@ const createProductController = async(req,res)=>{
      const {photo} = req.files;
     
      if(!name){res.status(500).send({error:"name is required"})};
-     if(!number){res.status(500).send({error:"number is required"})};
      if(!type){res.status(500).send({error:"type is required"})};
      if(!model){res.status(500).send({error:"model is required"})};
      if(!mileage){res.status(500).send({error:"mileage is required"})};
@@ -45,12 +44,11 @@ const createProductController = async(req,res)=>{
 
     const updateProductController = async(req,res)=>{
         try{
-            const {name,slug,description,price,category,quantity,shipping} = req.fields;
+            const {name,type,model,mileage,availableFrom,availableTill,pricePerKm,description,carDetails,Details,slug} = req.fields;
             const {photo} = req.files;
             const {pid} = req.params
            
             if(!name){res.status(500).send({error:"name is required"})};
-            if(!number){res.status(500).send({error:"number is required"})};
             if(!type){res.status(500).send({error:"type is required"})};
             if(!model){res.status(500).send({error:"model is required"})};
             if(!mileage){res.status(500).send({error:"mileage is required"})};
@@ -105,8 +103,8 @@ const createProductController = async(req,res)=>{
        //single product controller
        const getSingleProductController = async(req,res)=>{
         try{
-         const {id} = req.params;
-         const singleProduct = await productModel.findOne({id});
+          const {id} = req.params
+         const singleProduct = await productModel.findById(id);
         
          res.status(201).send({
             success:true,
@@ -138,7 +136,7 @@ const createProductController = async(req,res)=>{
        //delete product
        const deleteProductController =async(req,res)=>{
         const {id} = req.params;
-        const deleteProduct = await productModel.deleteOne({id});
+        const deleteProduct = await productModel.findByIdAndDelete(id);
         res.status(201).send({
             success:true,
             message:"deleted successfully",

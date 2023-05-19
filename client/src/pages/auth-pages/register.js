@@ -1,10 +1,10 @@
 //registration form
 import React, { useState } from 'react'
 import "../styles/login.css"
-
 import axios from 'axios'
 import {useNavigate} from "react-router-dom"
 import toast from "react-hot-toast";
+import Home from './Home';
 
 function Register() {
   const navigate = useNavigate()
@@ -36,6 +36,7 @@ function Register() {
   return (
     <>
     <div className="main-container">
+      <Home/>
       <div className='div-2-register'>
     <h3 id=''>Register in your account</h3>
       <form action='/register' method='post' onSubmit={submitData}>

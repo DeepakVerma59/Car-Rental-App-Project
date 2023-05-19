@@ -14,14 +14,14 @@
 
 }
 .div-1{
- 
+    position: fixed;
     font-size: 20px;
     font-weight: 1000;
-    color: red;
+    color: rgb(0, 153, 255);
 }
 a{
     margin-right: 20px;
-    color: rgb(243, 54, 54);
+    color: rgb(79, 78, 195);
 }
 label{
     font-weight: bolder;
@@ -31,6 +31,7 @@ label{
 img, svg{
     margin: 10px;
 }
+
 .div-2{
     background-color: white;
     background-color: white;

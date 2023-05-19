@@ -5,28 +5,38 @@ import Register from './pages/auth-pages/register';
 import Login from './pages/auth-pages/login';
 import Forgotpassword from './pages/auth-pages/forgotpassword';
 import AdminHomePage from './pages/admin/adminHomePage';
-// import Ordercar from './pages/user/Ordercar';
-import AddProducts from "./pages/admin/addProducts"
-import EditProducts from "./pages/admin/EditProducts"
-import PageNotFound from "./pages/PageNotFound"
-import BookingCheck from "./pages/user/BookingCheck"
+import AddProducts from './pages/admin/addProducts';
+import PageNotFound from './pages/PageNotFound';
+import EditProducts from './pages/admin/EditProducts';
+import Ordercar from './pages/user/Ordercar';
+import BookingCheck from './pages/user/BookingCheck';
 import { Toaster } from 'react-hot-toast';
+import MyBookings from './pages/user/myBookings';
+import BookingPage from './pages/user/BookingPage';
 
 
 function App() {
-  return (<>
+
+  
+
+  return <>
+  <Toaster/>
   <Routes>
     <Route path='/register' element={<Register/>}/>
     <Route path='/' element={<Login/>}/>
     <Route path='/booking-check' element={<BookingCheck/>}/>
+    <Route path='/my-booking' element={<MyBookings/>}/>
+    <Route path='/booking-page' element={<BookingPage/>}/>
+
     <Route path='/forgot-password' element={<Forgotpassword/>}/>
     <Route path='/admin-homepage' element={<AdminHomePage/>}/>
     <Route path='/admin-addproducts' element={<AddProducts/>}/>
     <Route path='/admin-editproducts/:id' element={<EditProducts/>}/>
+    <Route path='/order-car' element={<Ordercar/>}/>
     <Route path='*' element={<PageNotFound/>}/>
   </Routes>
   </>
-  )
+  
 }
 
 export default App;

@@ -1,16 +1,18 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import "./myBooking.css"
+import "../styles/myBooking.css"
+import UserHeader from "./userHeader"
 
 export default function MyBookings() {
 
 
     return <>
         <div id="outer">
+            <UserHeader/>
             <p>My Booking </p>
             <div className="bookings">
                 <div id="myimg" className="smallerDiv" >
-                    <img src="" width="250px" />
+                    <img src="" width="250px" alt="img" />
                 </div>
 
                 <div id="car" className="smallerDiv">

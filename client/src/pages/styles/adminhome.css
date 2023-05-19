@@ -1,0 +1,13 @@
+.car{
+    float: left;
+    font-size: larger;
+}
+.button{
+    float: right;
+}
+.main {
+    margin: 2em;
+}
+.card-img-top{
+    width: auto;
+}

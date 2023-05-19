@@ -1,7 +1,6 @@
 //page 1
 import React, { useState } from 'react';
 import "../styles/login.css"
-//import Home from '../../components/Home';
 import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios';
 import { useAuth } from "../../contextApi/authContext";
@@ -32,7 +31,7 @@ function Login() {
                     token: res.data.token
                 })
                 localStorage.setItem("auth", JSON.stringify(res.data));
-                navigate("/admin-homepage")
+                navigate("/booking-check")
             }
             else {
                 toast.error(res.data.message);
@@ -48,7 +47,7 @@ function Login() {
         <>
        
         <div className='main-container'>
-        <Home/>
+            <Home/>
         <div className='row'>
         <div className='col-md-7 text-center div-1'>
             <Link to="/Register">Register</Link><Link to=''>Admin Login</Link>

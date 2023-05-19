@@ -8,8 +8,12 @@ import AdminHomePage from './pages/admin/adminHomePage';
 import AddProducts from './pages/admin/addProducts';
 import PageNotFound from './pages/PageNotFound';
 import EditProducts from './pages/admin/EditProducts';
+import Ordercar from './pages/user/Ordercar';
 import BookingCheck from './pages/user/BookingCheck';
-import {Toaster} from "react-hot-toast"
+import { Toaster } from 'react-hot-toast';
+import MyBookings from './pages/user/myBookings';
+import BookingPage from './pages/user/BookingPage';
+
 
 function App() {
   return <>
@@ -18,14 +22,18 @@ function App() {
     <Route path='/register' element={<Register/>}/>
     <Route path='/' element={<Login/>}/>
     <Route path='/booking-check' element={<BookingCheck/>}/>
+    <Route path='/my-booking' element={<MyBookings/>}/>
+    <Route path='/booking-page' element={<BookingPage/>}/>
+
     <Route path='/forgot-password' element={<Forgotpassword/>}/>
     <Route path='/admin-homepage' element={<AdminHomePage/>}/>
     <Route path='/admin-addproducts' element={<AddProducts/>}/>
     <Route path='/admin-editproducts' element={<EditProducts/>}/>
+    <Route path='/order-car' element={<Ordercar/>}/>
     <Route path='*' element={<PageNotFound/>}/>
-</Routes>
+  </Routes>
   </>
-
+  
 }
 
 export default App;

@@ -4,7 +4,7 @@ import Options from './Options'
 import { Link } from 'react-router-dom'
 import "../styles/adminhome.css"
 import UserHeader from './userHeader'
-import { useAuth } from "../../contextApi/authContext"
+import { useAuth } from "../../context-api/auth-context"
 import toast from "react-hot-toast"
 import axios from 'axios'
 

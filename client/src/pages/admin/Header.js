@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link,useNavigate } from 'react-router-dom';
 import { AiFillCar } from "react-icons/ai"
-import { useAuth } from "../../contextApi/authContext";
+import { useAuth } from "../../context-api/auth-context";
 import toast from "react-hot-toast"
 
 

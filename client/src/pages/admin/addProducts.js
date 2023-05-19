@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Header from './Header'
-import { useAuth } from "../../contextApi/authContext"
+import { useAuth } from "../../context-api/auth-context"
 import { Link, useNavigate } from 'react-router-dom'
 import toast from "react-hot-toast"
 import axios from "axios"

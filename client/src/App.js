@@ -14,7 +14,7 @@ import { Toaster } from 'react-hot-toast';
 
 
 function App() {
-  return <>
+  return (<>
   <Routes>
     <Route path='/register' element={<Register/>}/>
     <Route path='/' element={<Login/>}/>

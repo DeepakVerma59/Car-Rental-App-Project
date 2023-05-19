@@ -16,3 +16,14 @@
    
 
 }
+.text {
+    display: flex;
+}
+.democar img{
+   
+    width: 15em;
+}
+.democar{
+    margin-left: auto;
+    margin-top: 1.5em;
+}

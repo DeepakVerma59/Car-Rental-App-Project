@@ -26,6 +26,61 @@ export default function MyBookings() {
         getBookingProduct();
     }, [])
 
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        try {
+          const productData = new FormData()
+          productData.append("name", name);
+          productData.append("type", type);
+          productData.append("model", model);
+          productData.append("mileage", mileage);
+          productData.append("pricePerKm", pricePerKm);
+          productData.append("availableFrom", availableFrom);
+          productData.append("availableTill", availableTill);
+          productData.append("description", description);
+          productData.append("photo", photo);
+          productData.append("carDetails", carDetails);
+          productData.append("details", details);
+    
+          const res = await axios.put(`${process.env.REACT_APP_PORT}/update-product/${params.id}`, productData,
+            {
+              headers: {
+                Authorization: `${auth?.token}`
+              }
+            })
+    
+          if (res.data.success) {
+            toast.success("product created successfully");
+            navigate("/admin-homepage");
+          }
+          else {
+            toast.error(res.data?.message)
+          }
+        }
+        catch (err) {
+          console.log(err)
+          toast.error("something went wrong");
+        }
+      }
+    
+      const handleDelete = async () => {
+        try {
+          const res = await axios.delete(`${process.env.REACT_APP_PORT}/delete-product/${params.id}`,
+            {
+              headers: {
+                Authorization: `${auth?.token}`
+              }
+            })
+          if (res.data.success) {
+            toast.success(res.data.message);
+            navigate("/admin-homepage")
+          }
+        }
+        catch (err) {
+          toast.error("something went wrong")
+        }
+      }
+
 
     return <>
     

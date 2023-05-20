@@ -12,7 +12,7 @@ function BookingPage() {
   const date = new Date();
   let day = date.getDate() +"/"+ date.getMonth()+"/"+date.getFullYear()
   let hour = parseInt(date.getHours())
-  let ampm= hour==12 ?"AM":"PM"
+  let ampm= hour===12 ?"AM":"PM"
   let time = hour +":"+date.getMinutes()+" "+ampm;
   
   const Distance=200

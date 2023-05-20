@@ -6,6 +6,7 @@ import {Link, useNavigate} from "react-router-dom"
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { useAuth } from "../../context-api/auth-context"
+import OrderPageHeader from './orderpageheader/OrderPageHeader'
 
 function BookingPage() {
   const [auth] = useAuth(); 
@@ -63,7 +64,8 @@ function BookingPage() {
   return (
     <>
     <UserHeader/>
-    <div id='header'>
+    <OrderPageHeader/>
+    {/* <div id='header'>
       <div className='container'>
         <form id="form" action="">
 
@@ -87,8 +89,8 @@ function BookingPage() {
           <Link to="/user-bookingcheck" id="modify" onClick={''}>MODIFY</Link>
         </form>
 
-      </div>
-    </div>
+      </div> */}
+    {/* </div> */}
     <div>
 <div className="card  card1 ">
   <div className="card-body mx-5" >

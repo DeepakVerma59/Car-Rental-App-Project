@@ -83,7 +83,7 @@ const createProductController = async(req,res)=>{
 
     const getProductController=async(req,res)=>{
         try{
-        const products = await productModel.find({}).limit(15).sort({createdAt:-1});
+        const products = await productModel.find({}).limit(20).sort({createdAt:-1});
         res.status(201).send({
            success:true,
            message:"products",

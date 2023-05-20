@@ -19,7 +19,7 @@ const UserHeader = () => {
         navigate("/")  
      }
      const handleMyBooking=()=>{
-        navigate("/user-bookings")
+        navigate("/user-bookings/:id")
       }
 
     return (

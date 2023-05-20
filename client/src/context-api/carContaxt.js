@@ -9,9 +9,13 @@ const carContext = createContext();
    startDate:"",
    endDate:"",
    origin:"",
-   destination:""
+   destination:"",
+   bookingDate:"",
+   bookingTime:""
   })
   const [carData, setCarData] = useState({});
+
+
 
 
   return (

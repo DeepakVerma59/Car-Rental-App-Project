@@ -39,7 +39,7 @@ const AdminHomePage = () => {
             {products?.map(p => (
               <Link to={`/admin-editproducts/${p._id}`} key={p._id} style={{textDecoration:"none"}}>
               <div className="card" style={{ width:"15rem"}}>
-                <img src={`${process.env.REACT_APP_PORT}/get-photo/${p._id}`} className="card-img-top" alt={p.name} style={{width:"auto"}}/>
+                <img src={`${process.env.REACT_APP_PORT}/get-photo/${p._id}`} className="card-img-top" alt={p.name} style={{width:"auto",height:"100px"}}/>
                 <div className="card-body">
                   <span style={{color:"gray",fontSize:"smaller"}}>6 persons</span>
                   <div>

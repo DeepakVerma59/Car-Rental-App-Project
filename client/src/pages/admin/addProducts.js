@@ -121,12 +121,12 @@ const handleSubmit =async(e)=>{
               <label className="form-label">Available From</label>
               <label className="form-label label-padding3">Available Till</label>
               <div className='mb-3'>
-                <input type="text"
+                <input type="date"
                   className='form-control mb-3'
                   onChange={(e) => setAvailableFrom(e.target.value)}
                   value={availableFrom} />
 
-                <input type="text"
+                <input type="date"
                   className='form-control mb-3 box-margin'
                   onChange={(e) => setAvailableTill(e.target.value)}
                   value={availableTill} />

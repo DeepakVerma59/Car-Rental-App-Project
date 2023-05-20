@@ -47,7 +47,7 @@ const createBookingController = async(req,res)=>{
 
     const updateBookingController = async(req,res)=>{
         try{
-            const {name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime} = req.fields;
+            const {name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime,pricePerKm} = req.fields;
             const {photo} = req.files;
     
             const {pid} = req.params
@@ -62,6 +62,7 @@ const createBookingController = async(req,res)=>{
             if(!bookingId){res.status(500).send({error:"details is required"})};
             if(!bookingDate){res.status(500).send({error:"details is required"})};
             if(!bookingTime){res.status(500).send({error:"details is required"})};
+            if(!pricePerKm){res.status(500).send({error:"details is required"})};
             if(photo && photo.size>100000){res.status(500).send({error:"photo is required and size less than 1 mb"})};
            
            
@@ -106,6 +107,25 @@ const createBookingController = async(req,res)=>{
           })
     }
        }
+       const getSingleBookingController = async(req,res)=>{
+        try{
+          const {id} = req.params
+         const singleBooking = await bookingModel.findById(id);
+        
+         res.status(201).send({
+            success:true,
+            message:"products",
+            singleBooking
+         })
+        }
+        catch(err){
+            console.log(err);
+            res.status(500).send({
+                success:false,
+                message:"invalid"
+            })
+        }
+        }
 
 
        //delete product
@@ -119,4 +139,4 @@ const createBookingController = async(req,res)=>{
         })
         }
 
-    module.exports = {createBookingController,updateBookingController,getBookingController,deleteBookingController}
+    module.exports = {createBookingController,updateBookingController,getSingleBookingController,getBookingController,deleteBookingController}

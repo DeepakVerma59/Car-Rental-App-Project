@@ -35,6 +35,9 @@ const bookingSchema = mongoose.Schema({
     },
     bookingTime:{
         type:String,
+    },
+    pricePerKm:{
+        type:String
     }
 
   

@@ -2,7 +2,7 @@ const express = require("express");
 const { requireSignin, isAdmin } = require("../middlewares/authMiddleware");
 const formidable = require("express-formidable")
 const route = express.Router();
-const {createBookingController,updateBookingController,getBookingController,deleteBookingController} = require("../controllers/bookingController")
+const {createBookingController,updateBookingController,getBookingController,getSingleBookingController,deleteBookingController} = require("../controllers/bookingController")
 
 
 //create product
@@ -15,6 +15,7 @@ route.put("/update-booking/:pid",requireSignin,formidable(),updateBookingControl
 route.get("/get-booking",getBookingController);
 
 //get-single-product && product detail
+route.get("/get-booking/:id",getSingleBookingController);
 
 //delete-product
 route.delete("/delete-booking/:id",requireSignin,deleteBookingController)

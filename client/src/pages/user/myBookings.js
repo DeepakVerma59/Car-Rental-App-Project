@@ -5,8 +5,12 @@ import "../styles/myBooking.css"
 import UserHeader from "./userHeader"
 import { useCar } from "../../context-api/carContaxt"
 import toast from "react-hot-toast"
-export default function MyBookings() {
 
+import { useAuth } from "../../context-api/auth-context"
+
+
+export default function MyBookings() {
+  const [auth] = useAuth(); 
     const [orderHeader, carData] = useCar()
    const params = useParams();
     const [value, setValue] = useState([])
@@ -26,46 +30,46 @@ export default function MyBookings() {
         getBookingProduct();
     }, [])
 
-    const handleUpdate = async (e) => {
-        e.preventDefault();
+    // const handleUpdate = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //       const productData = new FormData()
+    //       productData.append("name", name);
+    //       productData.append("type", type);
+    //       productData.append("model", model);
+    //       productData.append("mileage", mileage);
+    //       productData.append("pricePerKm", pricePerKm);
+    //       productData.append("availableFrom", availableFrom);
+    //       productData.append("availableTill", availableTill);
+    //       productData.append("description", description);
+    //       productData.append("photo", photo);
+    //       productData.append("carDetails", carDetails);
+    //       productData.append("details", details);
+    
+    //       const res = await axios.put(`${process.env.REACT_APP_PORT}/update-product/${params.id}`, productData,
+    //         {
+    //           headers: {
+    //             Authorization: `${auth?.token}`
+    //           }
+    //         })
+    
+    //       if (res.data.success) {
+    //         toast.success("product created successfully");
+    //         navigate("/admin-homepage");
+    //       }
+    //       else {
+    //         toast.error(res.data?.message)
+    //       }
+    //     }
+    //     catch (err) {
+    //       console.log(err)
+    //       toast.error("something went wrong");
+    //     }
+    //   }
+    
+      const handleDelete = async (id) => {
         try {
-          const productData = new FormData()
-          productData.append("name", name);
-          productData.append("type", type);
-          productData.append("model", model);
-          productData.append("mileage", mileage);
-          productData.append("pricePerKm", pricePerKm);
-          productData.append("availableFrom", availableFrom);
-          productData.append("availableTill", availableTill);
-          productData.append("description", description);
-          productData.append("photo", photo);
-          productData.append("carDetails", carDetails);
-          productData.append("details", details);
-    
-          const res = await axios.put(`${process.env.REACT_APP_PORT}/update-product/${params.id}`, productData,
-            {
-              headers: {
-                Authorization: `${auth?.token}`
-              }
-            })
-    
-          if (res.data.success) {
-            toast.success("product created successfully");
-            navigate("/admin-homepage");
-          }
-          else {
-            toast.error(res.data?.message)
-          }
-        }
-        catch (err) {
-          console.log(err)
-          toast.error("something went wrong");
-        }
-      }
-    
-      const handleDelete = async () => {
-        try {
-          const res = await axios.delete(`${process.env.REACT_APP_PORT}/delete-product/${params.id}`,
+          const res = await axios.delete(`${process.env.REACT_APP_PORT}/delete-booking/${id}`,
             {
               headers: {
                 Authorization: `${auth?.token}`
@@ -73,7 +77,7 @@ export default function MyBookings() {
             })
           if (res.data.success) {
             toast.success(res.data.message);
-            navigate("/admin-homepage")
+            window.location.reload();
           }
         }
         catch (err) {
@@ -119,8 +123,8 @@ export default function MyBookings() {
                 </div>
                 <div className="smallerDiv" >
                     <div className="buttons">
-                        <Link to="user-bookingconfirm" id="edit-booking-button"><button>Edit</button></Link>
-                        <button id="cancel-booking-button">Cancel</button>
+                        <Link to={`/user-editbooking/${v._id}`} id="edit-booking-button"><button>Edit</button></Link>
+                        <button id="cancel-booking-button" onClick={()=>handleDelete(v._id)}>Cancel</button>
                     </div>
                 </div>
             </div>

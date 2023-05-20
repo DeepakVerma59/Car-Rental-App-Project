@@ -39,6 +39,7 @@ function BookingPage() {
         bookingData.append("bookingId",carData._id);
         bookingData.append("bookingDate",day);
         bookingData.append("bookingTime",time);
+        bookingData.append("pricePerKm",carData.pricePerKm);
         
         
     const res = await axios.post(`${process.env.REACT_APP_PORT}/create-booking` ,bookingData,
@@ -103,7 +104,7 @@ function BookingPage() {
   <div className="form-group row mt-4">
     <label for="CarNumber" className="col-sm-2 col-form-label">Car Number</label>
     <div className="col-sm-5">
-      <input type="text" className="form-control" id="CarNumber" value={carData.pricePerKm}/>
+      <input type="text" className="form-control" id="CarNumber" value="HR 22N 6595"/>
     </div>
   </div>
   <hr/>

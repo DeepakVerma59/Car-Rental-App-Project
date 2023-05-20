@@ -11,10 +11,11 @@ const carContext = createContext();
    origin:"",
    destination:""
   })
+  const [carData, setCarData] = useState({});
 
 
   return (
-    <carContext.Provider value={[orderHeader,setOrderHeader]}>
+    <carContext.Provider value={[orderHeader,setOrderHeader,carData,setCarData]}>
     {children}
     </carContext.Provider>
   )

@@ -1,5 +1,6 @@
 const express = require("express");
 const route = express.Router();
+const {requireSignin,isAdmin} = require("../middlewares/authMiddleware")
 const {registerController,loginController,forgotPasswordController} = require("../controllers/authController")
 
 //registration
@@ -10,5 +11,7 @@ route.post("/login",loginController)
 
 //forgot password
 route.post("/forgot-password",forgotPasswordController)
+
+
 
 module.exports = route;

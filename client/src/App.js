@@ -26,7 +26,7 @@ function App() {
     <Route path='/' element={<Login/>}/>
     <Route path='/user-bookingcheck' element={<BookingCheck/>}/>
     <Route path='/user-homepage' element={<Ordercar/>}/>
-    <Route path='/user-bookings' element={<MyBookings/>}/>
+    <Route path='/user-bookings/:id' element={<MyBookings/>}/>
     <Route path='/user-bookingconfirm' element={<BookingPage/>}/>
 
     <Route path='/forgot-password' element={<Forgotpassword/>}/>

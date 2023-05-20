@@ -1,27 +1,45 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import { Link ,useParams} from "react-router-dom"
 import "../styles/myBooking.css"
 import UserHeader from "./userHeader"
 import { useCar } from "../../context-api/carContaxt"
+import toast from "react-hot-toast"
+import axios from "axios"
 
 export default function MyBookings() {
+ const params = useParams();
+ const [value,setValue]=useState({})
+ const [orderHeader,carData] = useCar()
+    const getSingleProduct = async()=>{
+        try{
+       const res = await axios.get(`${process.env.REACT_APP_PORT}/get-product/${params.id}`)
+       setValue(res.data.singleProduct)
+       console.log(value)
+        }
+        catch(err){
+            toast.error(err)
+        }
+    }
 
-    const [orderHeader] = useCar()
+    useEffect(()=>{
+        getSingleProduct();
+    },[])
 
     return <>
-        <div id="outer">
+   
+        <div id="outer" key={value._id}>
             <UserHeader/>
             <p>My Booking </p>
             <div className="bookings">
                 <div id="myimg" className="smallerDiv" >
-                    <img src="" width="250px" alt="img" />
+                    <img src={`${process.env.REACT_APP_PORT}/get-photo/${params.id}`} width="250px" alt="img" />
                 </div>
 
                 <div id="car" className="smallerDiv">
-                    <h6 >Name</h6>
-                    <h6>Type</h6>
-                    <h6>Details: </h6>
-                    <h6>Car Details:</h6>
+                    <h6>Name:{value.name}</h6>
+                    <h6>Type:{value.type}</h6>
+                    <h6>Details:{value.details}</h6>
+                    <h6>Car Details:{value.carDetails}</h6>
                 </div>
 
                 <div className="smallerDiv">
@@ -35,9 +53,9 @@ export default function MyBookings() {
                 </div>
 
                 <div className="smallerDiv">
-                    <h6> <span id="booking-label">Booking ID</span>: </h6>
-                    <h6> <span id="booking-label">Booking Date</span>:</h6>
-                    <h6> <span id="booking-label" >Booking Time</span>:</h6>
+                    <h6> <span id="booking-label">Booking ID</span>:{value._id} </h6>
+                    <h6> <span id="booking-label">Booking Date</span>:{orderHeader.bookingDate}</h6>
+                    <h6> <span id="booking-label" >Booking Time</span>:{orderHeader.bookingTime}</h6>
                 </div>
                 <div className="smallerDiv" >
                     <div className="buttons">
@@ -47,6 +65,7 @@ export default function MyBookings() {
                 </div>
             </div>
         </div>
+
     </>
 
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import Options from './Options'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import "../styles/adminhome.css"
 import UserHeader from './userHeader'
 import { useAuth } from "../../context-api/auth-context"
@@ -9,12 +9,12 @@ import { useCar } from '../../context-api/carContaxt'
 import toast from "react-hot-toast"
 import axios from 'axios'
 
-import OrderPageHeader from './orderpageheader/OrderPageHeader'
-
 
 function Ordercar() {
+
+  const navigate = useNavigate()
   const [auth] = useAuth();
-  const [carData, setCarData]= useCar()
+  const [orderHeader,setOrderHeader,carData,setCarData]= useCar()
   let [data, setdata] = useState([])
  async function getProduct(){
   try {
@@ -43,12 +43,40 @@ function Ordercar() {
  },[])
 
 
-
+ const bookNow =(data)=>{
+setCarData(data)
+  navigate("/user-bookingconfirm")
+ }
 
   return (
     <>
       <UserHeader />
-      <OrderPageHeader/>
+      <div id='header'>
+      <div className='container'>
+        <form id="form" action="">
+
+          <li className='Origin'
+          >O: {orderHeader.origin}
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+        </svg>
+
+           D: {orderHeader.destination}</li>
+
+          <li type="date" className="Origin"
+          >S: {orderHeader.startDate} 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+             </svg>
+          E: {orderHeader.endDate}</li>
+
+
+          <Link to="/user-bookingcheck" id="modify" onClick={""}>MODIFY</Link>
+        </form>
+
+      </div>
+    </div>
       <Options />
       {
         data.map(d => (
@@ -63,7 +91,7 @@ function Ordercar() {
                       <span className='button'>{d.pricePerKm}/ Km</span></div>
                     <div className='mt-2 '>
                       <span className='pl-4'>Fare Details</span>
-                      <Link to="/user-bookingconfirm" onClick={()=>{setCarData(d)}}><button type="button" className=" button btn btn-primary">Book Now</button></Link>
+                      <button type="button" className=" button btn btn-primary" onClick={()=>bookNow(d)}>Book Now</button>
                     </div>
                   </div>
                 </div>

@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios';
 import { useAuth } from "../../context-api/auth-context";
 import toast from "react-hot-toast"
+import Home from './Home';
 
 function Login() {
 
@@ -30,7 +31,11 @@ function Login() {
                     token: res.data.token
                 })
                 localStorage.setItem("auth", JSON.stringify(res.data));
-                navigate("/admin-homepage")
+                if(res.data.user.role==true){
+                    navigate('/admin-homepage')
+                }
+                else{
+                navigate("/user-bookingcheck")}
             }
             else {
                 toast.error(res.data.message);
@@ -44,11 +49,12 @@ function Login() {
 
     return (
         <>
-        
+       
         <div className='main-container'>
+            <Home/>
         <div className='row'>
         <div className='col-md-7 text-center div-1'>
-            <Link to="/Register">Register</Link><Link to=''>Admin Login</Link>
+            <Link to="/Register">Register</Link><Link to='/'>Login</Link>
             </div>
         </div>
         <div className="col-md-5 div-2">

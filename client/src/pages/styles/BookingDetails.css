@@ -1,0 +1,29 @@
+.card1{
+    width: 50em;
+    float: left;
+    margin-left: 5em;
+    margin-top: 5em;
+    
+
+    
+}
+.card2{
+    width :30em;
+    float: right;
+    margin-right: 5em;
+    margin-top: 5em;
+    height: auto;
+   
+
+}
+.text {
+    display: flex;
+}
+.democar img{
+   
+    width: 15em;
+}
+.democar{
+    margin-left: auto;
+    margin-top: 1.5em;
+}

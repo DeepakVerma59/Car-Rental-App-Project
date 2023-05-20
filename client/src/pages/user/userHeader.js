@@ -5,7 +5,7 @@ import { useAuth } from "../../context-api/auth-context";
 import toast from "react-hot-toast"
 
 
-const Header = () => {
+const UserHeader = () => {
     const navigate = useNavigate()
     const [auth, setAuth] = useAuth();
 
@@ -18,12 +18,17 @@ const Header = () => {
         toast.success("logout successful")
         navigate("/")  
      }
+     const handleMyBooking=()=>{
+        navigate("/user-bookings")
+      }
+
     return (
         <>
             <nav className="navbar navbar-light bg-light">
                 <div className="container-fluid">
-                    <Link to="/admin-homepage" className="navbar-brand"><AiFillCar/></Link>
+                    <Link to="/" className="navbar-brand"><AiFillCar size={30}/></Link>
                     <form className="d-flex px-5">
+                        <button className="btn btn-outline-success" type="submit" onClick={handleMyBooking}>My Bookings</button>
                         <button className="btn btn-outline-success" type="submit" onClick={handleLogout}>Logout</button>
                     </form>
                 </div>
@@ -33,4 +38,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default UserHeader

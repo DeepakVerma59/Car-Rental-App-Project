@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import toast from "react-hot-toast"
 import axios from "axios"
 import "../styles/products.css"
-import { Select } from 'antd';
+import {Select} from "antd"
 const { Option } = Select;
 
 const AddProducts = () => {

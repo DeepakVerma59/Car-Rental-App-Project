@@ -2,34 +2,64 @@ import React, { useEffect, useState } from 'react'
 import "../styles/BookingDetails.css"
 import UserHeader from './userHeader'
 import { useCar } from '../../context-api/carContaxt'
-import {Link} from "react-router-dom"
-
-
-
+import {Link, useNavigate} from "react-router-dom"
+import toast from 'react-hot-toast'
+import axios from 'axios'
+import { useAuth } from "../../context-api/auth-context"
 
 function BookingPage() {
+  const [auth] = useAuth(); 
 
-
+  const navigate = useNavigate()
   const [ orderHeader, setOrderHeader,carData,setCarData] = useCar()
-
+  
   const date = new Date();
   let day = date.getDate() +"/"+ date.getMonth()+"/"+date.getFullYear()
   let hour = parseInt(date.getHours())
   let ampm= hour==12 ?"AM":"PM"
   let time = hour +":"+date.getMinutes()+" "+ampm;
   
-  const Distance=200
-  const Pricing= 222//parseInt(CarData.perKm)
+  const Distance=Math.floor(Math.random()*300)
+  const Pricing= parseInt(carData.pricePerKm)
   const Subtotal=(Pricing*Distance)
   const Tax = parseInt((Subtotal)*0.18);
   const Total = Subtotal + Tax;
 
+  const handleSubmit =async(e)=>{
+    e.preventDefault();
+    try{
+      const bookingData = new FormData()
+        bookingData.append("name",carData.name);
+        bookingData.append("carDetails",carData.carDetails);
+        bookingData.append("details",carData.details);
+        bookingData.append("origin",orderHeader.origin);
+        bookingData.append("destination",orderHeader.destination);
+        bookingData.append("startDate",orderHeader.startDate);
+        bookingData.append("endDate",orderHeader.endDate);
+        bookingData.append("bookingId",carData._id);
+        bookingData.append("bookingDate",day);
+        bookingData.append("bookingTime",time);
+        bookingData.append("pricePerKm",carData.pricePerKm);
+        
+        
+    const res = await axios.post(`${process.env.REACT_APP_PORT}/create-booking` ,bookingData,
+    {headers:
+      {Authorization:`${auth?.token}`}})
+  
+    if(res.data.success){
+      toast.success("booking created successfully");
+      navigate(`/user-bookings/${carData._id}`);
+    }
+    else{
+      toast.error(res.data?.message)
+    }
+    }
+    catch(err){
+      console.log(err)
+      toast.error("something went wrong");
 
-  useEffect(()=>{
-    setOrderHeader({...orderHeader,bookingDate:day,bookingTime:time})
-  },[])
-
-
+    }
+  }
   return (
     <>
     <UserHeader/>
@@ -74,7 +104,7 @@ function BookingPage() {
   <div className="form-group row mt-4">
     <label for="CarNumber" className="col-sm-2 col-form-label">Car Number</label>
     <div className="col-sm-5">
-      <input type="text" className="form-control" id="CarNumber" value={carData.pricePerKm}/>
+      <input type="text" className="form-control" id="CarNumber" value="HR 22N 6595"/>
     </div>
   </div>
   <hr/>
@@ -114,7 +144,7 @@ function BookingPage() {
   <div className="form-group row mt-2">
     <label for="btime" className="col-sm-2 col-form-label">Booking Time</label>
     <div className="col-sm-5">
-      <input type="text"  className="form-control" id="btime" value={time}/>
+      <input type="text"  className="form-control" id="btime"  value={time}/>
     </div>
   </div>
   <div className="form-group row mt-2">
@@ -176,7 +206,7 @@ function BookingPage() {
 </form>
 
 </div>
-<Link to={`/user-bookings/${carData._id}`}><button type="button"  className="btn  btn-primary btn-lg btn-block mx-4">Proceed</button></Link>
+<button type="button" onClick={handleSubmit} className="btn  btn-primary btn-lg btn-block mx-4">Proceed</button>
 </div>
 </div>
     </>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-
 import Options from './Options'
 import { Link,useNavigate } from 'react-router-dom'
 import "../styles/adminhome.css"
@@ -44,7 +43,7 @@ function Ordercar() {
 
 
  const bookNow =(data)=>{
-setCarData(data)
+  setCarData(data);
   navigate("/user-bookingconfirm")
  }
 

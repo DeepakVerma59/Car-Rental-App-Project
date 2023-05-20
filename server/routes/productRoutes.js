@@ -14,6 +14,7 @@ route.put("/update-product/:pid",requireSignin,isAdmin,formidable(),updateProduc
 //get products
 route.get("/get-product",getProductController);
 
+
 //get-single-product && product details
 route.get("/get-product/:id",getSingleProductController);
 

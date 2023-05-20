@@ -25,7 +25,7 @@ function BookingCheck() {
         "origin":origin,
         "destination":destination
     })
-    navigate('/order-car')
+    navigate('/user-homepage')
 }
 
 
@@ -38,13 +38,13 @@ function BookingCheck() {
             <form method='post' onSubmit={submitCheck}>
                 <h3>Check For Available Car Option According To Your Choice</h3>
                 <label htmlFor="">Start Date</label><br/>
-                <input className='input-booking' name='StartDate'value={startDate} type='date' onChange={(e)=>{setStartDate(e.target.value)}} placeholder='Start Date'/><br/>
+                <input className='input-booking' required name='StartDate'value={startDate} type='date' onChange={(e)=>{setStartDate(e.target.value)}} placeholder='Start Date'/><br/>
                 <label htmlFor="">Return Date</label><br/>
-                <input className='input-booking' name='EndDate' value={endDate} type='date' onChange={(e)=>{setEndDate(e.target.value)}}   placeholder='Return Date'/><br/>
+                <input className='input-booking' required name='EndDate' value={endDate} type='date' onChange={(e)=>{setEndDate(e.target.value)}}   placeholder='Return Date'/><br/>
                 <label htmlFor="">Origin</label><br/>
-                <input className='input-booking' name='Origin' value={origin} type='text' onChange={(e)=>{setOrigin(e.target.value)}} placeholder='Origin'/><br/>
+                <input className='input-booking' required name='Origin' value={origin} type='text' onChange={(e)=>{setOrigin(e.target.value)}} placeholder='Origin'/><br/>
                 <label htmlFor="">Destination</label><br/>
-                <input className='input-booking' name='Destination' value={destination} type='text' onChange={(e)=>{setDestination(e.target.value)}} placeholder='Destination'/><br/>
+                <input className='input-booking' name='Destination' required value={destination} type='text' onChange={(e)=>{setDestination(e.target.value)}} placeholder='Destination'/><br/>
                 <button id="check" type='submit'>Check</button>
             </form>
         </div>

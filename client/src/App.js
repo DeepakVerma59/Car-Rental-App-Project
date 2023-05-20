@@ -21,15 +21,16 @@ function App() {
   <Routes>
     <Route path='/register' element={<Register/>}/>
     <Route path='/' element={<Login/>}/>
-    <Route path='/booking-check' element={<BookingCheck/>}/>
-    <Route path='/my-booking' element={<MyBookings/>}/>
-    <Route path='/booking-page' element={<BookingPage/>}/>
+    <Route path='/user-bookingcheck' element={<BookingCheck/>}/>
+    <Route path='/user-homepage' element={<Ordercar/>}/>
+    <Route path='/user-bookings' element={<MyBookings/>}/>
+    <Route path='/user-bookingconfirm' element={<BookingPage/>}/>
 
     <Route path='/forgot-password' element={<Forgotpassword/>}/>
     <Route path='/admin-homepage' element={<AdminHomePage/>}/>
     <Route path='/admin-addproducts' element={<AddProducts/>}/>
     <Route path='/admin-editproducts/:id' element={<EditProducts/>}/>
-    <Route path='/order-car' element={<Ordercar/>}/>
+
     <Route path='*' element={<PageNotFound/>}/>
   </Routes>
   </>

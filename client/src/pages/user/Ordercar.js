@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom'
 import "../styles/adminhome.css"
 import UserHeader from './userHeader'
 import { useAuth } from "../../context-api/auth-context"
+import { useCar } from '../../context-api/carContaxt'
 import toast from "react-hot-toast"
 import axios from 'axios'
 
 import OrderPageHeader from './orderpageheader/OrderPageHeader'
 
-function Ordercar() {
 
+function Ordercar() {
   const [auth] = useAuth();
+  const [carData, setCarData]= useCar()
   let [data, setdata] = useState([])
  async function getProduct(){
   try {
@@ -25,6 +27,7 @@ function Ordercar() {
       toast.success(res.data.message);
       setdata(res.data.products)
       console.log(res.data.products)
+      
     }
     else {
       toast.error(res.data?.message)
@@ -38,7 +41,10 @@ function Ordercar() {
  useEffect(()=>{
     getProduct();
  },[])
-  
+
+
+
+
   return (
     <>
       <UserHeader />
@@ -53,11 +59,11 @@ function Ordercar() {
                   <img  className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`}  alt="car" />
                   <div className="card-body">
                     <div>
-                      <span className="card-title">{d.name}</span>
+                      <span className="card-title" >{d.name}</span>
                       <span className='button'>{d.pricePerKm}/ Km</span></div>
                     <div className='mt-2 '>
                       <span className='pl-4'>Fare Details</span>
-                      <Link to="/booking-page"><button type="button" className=" button btn btn-primary">Book Now</button></Link>
+                      <Link to="/user-bookingconfirm" onClick={()=>{setCarData(d)}}><button type="button" className=" button btn btn-primary">Book Now</button></Link>
                     </div>
                   </div>
                 </div>

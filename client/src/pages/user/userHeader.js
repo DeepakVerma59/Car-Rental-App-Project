@@ -19,14 +19,14 @@ const UserHeader = () => {
         navigate("/")  
      }
      const handleMyBooking=()=>{
-        navigate("/my-booking")
+        navigate("/user-bookings")
       }
 
     return (
         <>
             <nav className="navbar navbar-light bg-light">
                 <div className="container-fluid">
-                    <Link to="/" className="navbar-brand"><AiFillCar/></Link>
+                    <Link to="/" className="navbar-brand"><AiFillCar size={30}/></Link>
                     <form className="d-flex px-5">
                         <button className="btn btn-outline-success" type="submit" onClick={handleMyBooking}>My Bookings</button>
                         <button className="btn btn-outline-success" type="submit" onClick={handleLogout}>Logout</button>

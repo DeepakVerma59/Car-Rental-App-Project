@@ -25,7 +25,7 @@ function OrderPageHeader() {
           >Ending :{orderHeader.endDate}</li>
 
 
-          <Link to="/booking-check" id="modify" onClick={''}>Edit</Link>
+          <Link to="/user-bookingcheck" id="modify" onClick={''}>Edit</Link>
         </form>
 
       </div>

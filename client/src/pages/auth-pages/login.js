@@ -31,7 +31,11 @@ function Login() {
                     token: res.data.token
                 })
                 localStorage.setItem("auth", JSON.stringify(res.data));
-                navigate("/booking-check")
+                if(res.data.user.role==true){
+                    navigate('/admin-homepage')
+                }
+                else{
+                navigate("/user-bookingcheck")}
             }
             else {
                 toast.error(res.data.message);
@@ -50,7 +54,7 @@ function Login() {
             <Home/>
         <div className='row'>
         <div className='col-md-7 text-center div-1'>
-            <Link to="/Register">Register</Link><Link to=''>Admin Login</Link>
+            <Link to="/Register">Register</Link><Link to='/'>Login</Link>
             </div>
         </div>
         <div className="col-md-5 div-2">

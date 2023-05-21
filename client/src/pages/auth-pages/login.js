@@ -54,7 +54,7 @@ function Login() {
             <Home/>
         <div className='row'>
         <div className='col-md-7 text-center div-1'>
-            <Link  to="/Register">Register</Link><Link to='/admin-login'>Admin Login</Link>
+            <Link to="/Register">Register</Link><Link to='/admin-login'>Admin Login</Link>
             </div>
         </div>
         <div className="col-md-5 div-2">
@@ -65,7 +65,7 @@ function Login() {
                 <label>Password</label><br/>
                 <input type='password' value={password} onChange={e=>{setPassword(e.target.value)}} placeholder='Password'/><br/>
                 <a id="forgot-password" href="/forgot-password">Forgot Password</a><br/><br/>
-                <Link to="/Register"><button id="create-account" >Create Account</button></Link>
+                <Link to='/Register'><button id="create-account" >Create Account</button></Link>
                 <button id="sign-in" type='submit'>Sign IN</button>
             </form>
         </div>

@@ -6,7 +6,7 @@ const fs = require("fs");
 const createBookingController = async(req,res)=>{
     try{
      const {name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime} = req.fields;
-     const {photo} = req.files;
+     const {photo} = req.body;
     
      if(!name){res.status(500).send({error:"name is required"})};
      if(!carDetails){res.status(500).send({error:"is required"})};

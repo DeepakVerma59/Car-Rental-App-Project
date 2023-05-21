@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "../styles/BookingDetails.css"
 import UserHeader from './userHeader'
 import { useCar } from '../../context-api/carContaxt'
@@ -6,6 +6,13 @@ import {Link, useNavigate} from "react-router-dom"
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { useAuth } from "../../context-api/auth-context"
+import GoogleMapReact from 'google-map-react';
+import { Icon } from '@iconify/react'
+import locationIcon from '@iconify/icons-mdi/map-marker'
+
+import '../styles/map.css'
+
+
 
 function BookingPage() {
   const [auth] = useAuth(); 
@@ -42,7 +49,8 @@ function BookingPage() {
         bookingData.append("pricePerKm",carData.pricePerKm);
         
         
-    const res = await axios.post(`${process.env.REACT_APP_PORT}/create-booking` ,bookingData,
+    const res = await axios.post(`${process.env.REACT_APP_PORT}/create-booking` ,{bookingData,
+      photo:carData.photo},
     {headers:
       {Authorization:`${auth?.token}`}})
   
@@ -60,6 +68,22 @@ function BookingPage() {
 
     }
   }
+  
+  const LocationPin = ({ text }) => (
+    <div className="pin">
+      <Icon icon={locationIcon} className="pin-icon" />
+      <p className="pin-text">{text}</p>
+    </div>
+  )   
+
+  const location = {
+    center:{
+    lat: 19.075983,
+    lng: 72.877655
+    },
+    zoom:11
+  }
+
   return (
     <>
     <UserHeader/>
@@ -138,7 +162,7 @@ function BookingPage() {
   <div className="form-group row mt-2">
     <label for="bookingid" className="col-sm-2 col-form-label">Booking ID</label>
     <div className="col-sm-5">
-      <input type="text"  className="form-control" id="bookingid" value="GOTAP6"/>
+      <input type="text"  className="form-control" id="bookingid" value={carData._id}/>
     </div>
   </div>
   <div className="form-group row mt-2">
@@ -156,7 +180,21 @@ function BookingPage() {
   
 
 </form>
-   
+<div className="map">
+
+    <div className="google-map">
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: 'AIzaSyAppNv_hKiqWizwpVnzD4j8xCH1YY8VqsE' }}
+        defaultCenter={location.center}
+        defaultZoom={location.zoom}
+      >
+        <LocationPin
+          lat={location.center.lat}
+          lng={location.center.lng}
+        />
+      </GoogleMapReact>
+    </div>
+  </div>
     
 <Link to='/user-homepage'><button type="button" class="btn btn-outline-primary mt-4">Cancel</button></Link>
   </div>

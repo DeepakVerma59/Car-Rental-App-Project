@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import "../styles/login.css"
 import axios from 'axios'
 import {Link,useNavigate} from "react-router-dom"
+
 import toast from "react-hot-toast";
 import Home from './Home';
 
@@ -62,6 +63,7 @@ function Register() {
         </div>
         <div><br/>
         <Link to="/"><button className='sign-in'>Sign In</button></Link>
+       
         <button className='register' type='submit'>Register</button>
         </div>
       </form>

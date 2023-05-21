@@ -13,11 +13,13 @@ export default function MyBookings() {
   const [auth] = useAuth(); 
     const [orderHeader, carData] = useCar()
    const params = useParams();
+
     const [value, setValue] = useState([])
     const getBookingProduct = async () => {
         try {
             const res = await axios.get(`${process.env.REACT_APP_PORT}/get-booking`)
             console.log(res.data.products)
+          
             setValue(res.data.products)
             console.log(value)
         }
@@ -131,6 +133,7 @@ export default function MyBookings() {
             ))
             }
         </div>
+
     </>
 
 }

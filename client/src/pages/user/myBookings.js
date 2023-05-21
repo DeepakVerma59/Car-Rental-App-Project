@@ -19,8 +19,10 @@ export default function MyBookings() {
         try {
             const res = await axios.get(`${process.env.REACT_APP_PORT}/get-booking`)
             console.log(res.data.products)
-          
-            setValue(res.data.products)
+        
+            // setValue(res.data.products)
+              const filteredValue = res.data.products.filter(item=>auth?.user.id==item.userId);
+              setValue(filteredValue);           
             console.log(value)
         }
         catch (err) {
@@ -90,7 +92,7 @@ export default function MyBookings() {
 
     return <>
     
-        <div id="outer">
+        <div id="outer" className="allbg">
             <UserHeader/>
             <p>My Booking </p>
             {
@@ -125,8 +127,8 @@ export default function MyBookings() {
                 </div>
                 <div className="smallerDiv" >
                     <div className="buttons">
-                        <Link to={`/user-editbooking/${v._id}`} id="edit-booking-button"><button>Edit</button></Link>
-                        <button id="cancel-booking-button" onClick={()=>handleDelete(v._id)}>Cancel</button>
+                        <Link to={`/user-editbooking/${v._id}`} id="edit-booking-button"><button className="newbtn">Edit</button></Link>
+                        <button className="newbtn px-3" id="cancel-booking-button" onClick={()=>handleDelete(v._id)}>Cancel</button>
                     </div>
                 </div>
             </div>

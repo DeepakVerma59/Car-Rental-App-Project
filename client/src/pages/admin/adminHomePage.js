@@ -27,7 +27,7 @@ const AdminHomePage = () => {
   return (
     <>
       <Header />
-      <div className='main'>
+      <div className='main allbg'>
         <h1>Hello Admin....</h1>
         <br />
         <div className="car" style={{fontWeight:"bold"}}>Cars</div>

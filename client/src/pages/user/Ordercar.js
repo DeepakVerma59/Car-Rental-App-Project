@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import "../styles/adminhome.css"
+//  
 import UserHeader from './userHeader'
 import { useAuth } from "../../context-api/auth-context"
 import { useCar } from '../../context-api/carContaxt'
@@ -72,20 +72,20 @@ function Ordercar() {
           <form id="form" action="">
 
             <li className='Origin'
-            >O: {orderHeader.origin}
+            > {orderHeader.origin}
 
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
               </svg>
 
-              D: {orderHeader.destination}</li>
+             {orderHeader.destination}</li>
 
             <li type="date" className="Origin"
-            >S: {orderHeader.startDate}
+            >{orderHeader.startDate}
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
               </svg>
-              E: {orderHeader.endDate}</li>
+             {orderHeader.endDate}</li>
 
 
             <Link to="/user-bookingcheck" id="modify" onClick={""}>MODIFY</Link>
@@ -93,9 +93,9 @@ function Ordercar() {
 
         </div>
       </div>
-      <div className='header'>
+      <div className='header head'>
         <div className="dropdown">
-          <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+          <button type="button" className="btn button btn-primary dropdown-toggle" data-bs-toggle="dropdown">
             Car Type
           </button>
           <ul className="dropdown-menu">
@@ -127,14 +127,15 @@ function Ordercar() {
           </ul>
         </div>
       </div>
-      <div className='d-flex flex-wrap' style={{marginLeft:"90px"}}>
-      {
+      
+        <div className='d-flex flex-wrap' style={{marginLeft:"90px"}}>
+          {
         data.map(d => (
           <div key={d._id}>
-            <div className="row ">
-              <div className="col ">
+            <div className="row m-3">
+              <div className="col">
                 <div className="card">
-                  <img style={{width:"250px",height:"166px"}} className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" />
+                  <img className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" style={{width:"250px",height:"166px"}}/>
                   <div className="card-body">
                     <div>
                       <span className="card-title" >{d.name}</span>
@@ -149,9 +150,8 @@ function Ordercar() {
             </div>
           </div>
         ))}
-        </div>
+  </div>
     </>
   )
-}
-
+        }
 export default Ordercar

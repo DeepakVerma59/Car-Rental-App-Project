@@ -112,7 +112,7 @@ const EditProducts = () => {
 
   return (
     <>
-      <div className='container-fluid m-3 p-3'>
+      <div className='container-fluid m-3 p-3 allbg'>
         <Header />
         <div className='row'>
           <h2 className='mb-5'>Edit Car Details</h2>

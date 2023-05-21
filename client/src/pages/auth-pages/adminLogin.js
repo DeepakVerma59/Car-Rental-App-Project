@@ -31,11 +31,7 @@ function AdminLogin() {
                     token: res.data.token
                 })
                 localStorage.setItem("auth", JSON.stringify(res.data));
-                if(res.data.user.role==true){
-                    navigate('/admin-homepage')
-                }
-                else{
-                navigate("/user-bookingcheck")}
+                navigate('/admin-homepage')
             }
             else {
                 toast.error(res.data.message);

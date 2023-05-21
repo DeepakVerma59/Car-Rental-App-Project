@@ -15,7 +15,25 @@
 .span{
     padding-left: 20px;
 }
-
+.head{
+    display: flex;
+    flex-direction: row;
+}
+.dropdown{
+    margin: 4px;
+   
+}
+.dropdown button{
+    margin-left: 10px;
+}
+.carmodel{
+    display: flex;
+    flex-direction: row
+}
+.allbg{
+    background-color:rgb(244, 242, 242);
+    padding: 20px;
+}
 
 
 

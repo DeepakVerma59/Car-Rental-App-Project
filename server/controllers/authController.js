@@ -66,10 +66,10 @@ const registerController = async(req,res)=>{
             success:true,
             message:"login successful",
             user:{
+                id:loginUser._id,
                 name:loginUser.name,
                 email:loginUser.email,
                 phone:loginUser.phone,
-                address:loginUser.address,
                 role:loginUser.role
             },
             token

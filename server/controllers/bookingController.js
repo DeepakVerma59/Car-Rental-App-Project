@@ -5,9 +5,10 @@ const fs = require("fs");
 
 const createBookingController = async(req,res)=>{
     try{
-     const {name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime} = req.fields;
-     const {photo} = req.files;
-    
+     const {userId,name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime} = req.fields;
+     const {photo} = req.files
+    //  const {photo} = req.files;
+
      if(!name){res.status(500).send({error:"name is required"})};
      if(!carDetails){res.status(500).send({error:"is required"})};
      if(!details){res.status(500).send({error:"is required"})};
@@ -47,9 +48,7 @@ const createBookingController = async(req,res)=>{
 
     const updateBookingController = async(req,res)=>{
         try{
-            const {name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime,pricePerKm} = req.fields;
-            const {photo} = req.files;
-    
+            const {name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime,pricePerKm,photo} = req.fields;
             const {pid} = req.params
            
             if(!name){res.status(500).send({error:"name is required"})};

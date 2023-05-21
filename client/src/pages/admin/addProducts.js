@@ -30,6 +30,7 @@ const handleSubmit =async(e)=>{
   e.preventDefault();
   try{
     const productData = new FormData()
+      productData.append("adminId",auth.user.id)
       productData.append("name",name);
       productData.append("type",type);
       productData.append("model",model);

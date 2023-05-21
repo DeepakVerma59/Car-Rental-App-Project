@@ -1,15 +1,16 @@
-import React, { useState , useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import "../styles/BookingDetails.css"
 import UserHeader from './userHeader'
 import { useCar } from '../../context-api/carContaxt'
-import { Link, useParams,useNavigate } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast'
 import axios from 'axios'
+import Map from './map'
 import { useAuth } from "../../context-api/auth-context"
 
 
 function EditMyBooking() {
-   // const [auth] = useAuth();
+    const [auth] = useAuth();
 
     const navigate = useNavigate()
     const params = useParams()
@@ -27,26 +28,37 @@ function EditMyBooking() {
     const Subtotal = (Pricing * Distance)
     const Tax = parseInt((Subtotal) * 0.18);
     const Total = Subtotal + Tax;
+    const [destination,setDestination] = useState("");
+    const [origin,setOrigin] = useState("");
+    const [startDate,setStartDate] = useState("");
+    const [endDate,setEndDate]=useState("")
 
     const getSingleBooking = async () => {
         try {
-          const res = await axios.get(`${process.env.REACT_APP_PORT}/get-booking/${params.id}`);
-          setBookingData(res.data.singleBooking)
-    
-    
+            const res = await axios.get(`${process.env.REACT_APP_PORT}/get-booking/${params.id}`);
+            setBookingData(res.data.singleBooking)
+            setStartDate(res.data.singleBooking.startDate)
+            setEndDate(res.data.singleBooking.endDate)
         }
         catch (err) {
-          console.log(err)
-          toast.error("something went wrong")
+            console.log(err)
+            toast.error("something went wrong")
         }
-      }
-    
-      useEffect(() => {
-        getSingleBooking();
-      }, [])
-    
+    }
 
-    function handleSubmit(){
+    useEffect(() => {
+        getSingleBooking();
+    }, [])
+
+
+    async function handleSubmit() {
+        const res = await axios.put(`${process.env.REACT_APP_PORT}/update-booking/${bookingData._id}`,{startDate,endDate},
+        {
+            headers: {
+              Authorization: `${auth?.token}`
+            }
+          })
+          toast.success("updated successfully")
         navigate(`/user-bookings/${carData._id}`)
     }
     return (
@@ -82,19 +94,26 @@ function EditMyBooking() {
                             <div className="form-group row mt-2">
                                 <label for="destination" className="col-sm-2 col-form-label">Destination</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control-plaintext" id="destination" value={bookingData.destination} />
+                                    <input type="text" className="form-control-plaintext" id="destination" value={bookingData.destination}/>
                                 </div>
+                               
+
+                                <div id="map-of-the-edit-payment-details">
+                                    <Map origin={origin} destination={destination} className='map-of-doom image-of-hte-map-of-the-edit-page' />
+                                </div>
+
+
                             </div>
                             <div className="form-group row mt-2">
                                 <label for="startdate" className="col-sm-2 col-form-label">Start Date</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control-plaintext" id="startdate" value={bookingData.startDate} />
+                                    <input type="date" className="form-control-plaintext" id="startdate" value={startDate} onChange={(e)=>setStartDate(e.target.value)}/>
                                 </div>
                             </div>
                             <div className="form-group row mt-2">
                                 <label for="enddate" className="col-sm-2 col-form-label">End Date</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control-plaintext" id="enddate" value={bookingData.endDate} />
+                                    <input type="date" className="form-control-plaintext" id="enddate" value={endDate} onChange={(e)=>setEndDate(e.target.value)} />
                                 </div>
                             </div>
                             <hr />
@@ -139,12 +158,12 @@ function EditMyBooking() {
                                 </div>
                             </div>
 
-                            <div className="form-group row mt-2">
+                            {/* <div className="form-group row mt-2">
                                 <label for="pricing" className="col-sm-5 col-form-label">Distance</label>
                                 <div className="col-sm-5">
                                     <input type="text" className="form-control-plaintext" id="pricing" value={Distance} />
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className="form-group row mt-2">
                                 <label for="taxcharge" className="col-sm-5 col-form-label">Tax charges</label>
@@ -169,7 +188,7 @@ function EditMyBooking() {
                         </form>
 
                     </div>
-                    <button type="button" onClick={handleSubmit} className="btn  btn-primary btn-lg btn-block mx-4">Proceed</button>
+                    <button type="button" onClick={handleSubmit} className="btn  btn-primary btn-lg btn-block mx-4">Update</button>
                 </div>
             </div>
         </>

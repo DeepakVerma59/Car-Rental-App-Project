@@ -14,9 +14,9 @@ const Header = () => {
             user: null,
             token: ""
         })
-        localStorage.removeItem(auth);
+        localStorage.removeItem("auth");
         toast.success("logout successful")
-        navigate("/")  
+         navigate("/")
      }
     return (
         <>
@@ -28,7 +28,7 @@ const Header = () => {
                     </form>
                 </div>
             </nav>
-
+       
         </>
     )
 }

@@ -6,7 +6,7 @@ import {Link, useNavigate} from "react-router-dom"
 import toast from "react-hot-toast";
 import Home from './Home';
 
-function Register() {
+function AdminRegister() {
   const navigate = useNavigate()
   const [name,setName] = useState("");
   const [email,setEmail] = useState("");
@@ -17,11 +17,11 @@ function Register() {
     e.preventDefault();
    //  console.log(name,email,password,phone,address)
    try{
-    const res = await axios.post(`${process.env.REACT_APP_PORT}/register`,{
+    const res = await axios.post(`${process.env.REACT_APP_PORT}/admin-register`,{
        name,email,password,contact});
     if(res.data.success){
-       toast.success(res.data.message);
-       navigate("/")
+       toast.success("admin registered successfully!");
+       navigate("/admin-login")
     }
     else{
        toast.error(res.data.message);
@@ -38,7 +38,7 @@ function Register() {
     <div className="main-container">
       <Home/>
       <div className='div-2-register'>
-    <h3 id=''>User Register</h3>
+    <h3 id=''>Admin Register</h3>
       <form action='/register' method='post' onSubmit={submitData}>
         <div>
         <label>Name</label><br/>
@@ -61,7 +61,7 @@ function Register() {
         <input className="input" type='password' id='confirm password' placeholder='Confirm Password'/>
         </div>
         <div><br/>
-       <Link to="/"><button className='sign-in'>Sign In</button></Link> 
+       <Link to="/admin-login"><button className='sign-in'>Sign In</button></Link> 
         <button className='register' type='submit'>Register</button>
         </div>
       </form>
@@ -71,4 +71,4 @@ function Register() {
   )
 }
 
-export default Register
+export default AdminRegister

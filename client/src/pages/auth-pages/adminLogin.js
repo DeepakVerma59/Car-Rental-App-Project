@@ -1,4 +1,3 @@
-//page 1
 import React, { useState } from 'react';
 import "../styles/login.css"
 import { Link, useNavigate } from "react-router-dom"
@@ -7,7 +6,7 @@ import { useAuth } from "../../context-api/auth-context";
 import toast from "react-hot-toast"
 import Home from './Home';
 
-function Login() {
+function AdminLogin() {
 
 
     const navigate = useNavigate()
@@ -19,7 +18,7 @@ function Login() {
         e.preventDefault();
         //  console.log(name,email,password,phone,address)
         try {
-            const res = await axios.post(`${process.env.REACT_APP_PORT}/login`, {
+            const res = await axios.post(`${process.env.REACT_APP_PORT}/admin-login`, {
                 email, password
             });
             if (res.data.success) {
@@ -31,7 +30,7 @@ function Login() {
                     token: res.data.token
                 })
                 localStorage.setItem("auth", JSON.stringify(res.data));
-                navigate("/user-bookingcheck")
+                    navigate('/admin-homepage')
             }
             else {
                 toast.error(res.data.message);
@@ -45,8 +44,8 @@ function Login() {
 
     return (
         <>
-       
-        <div className='main-container'>
+
+<div className='main-container'>
             <Home/>
             <h3 className='heading'>
                 <small className="text-muted display-6">The perfect car for your next trip is just around the corner...</small>
@@ -62,10 +61,9 @@ function Login() {
             <div class="s">!</div>
         </div>
     </div>
-
-
-
-        <div classNameName='row'>
+       
+       
+            <div classNameName='row'>
         <div className='col-md-7 text-center div-1'>
             <Link to="/register">User SignUp</Link><Link to='/'>User SignIn</Link>
             </div>
@@ -76,20 +74,19 @@ function Login() {
         </div>
         <div className="col-md-5 div-2">
             <form method='post' onSubmit={submitSignin}>
-                <h3 id='sign-in-div'> User Sign In </h3><br/>
+                <h3 id='sign-in-div'>Admin-Sign In </h3><br/>
                 <label>Email</label><br/>
                 <input type='text' value={email} onChange={e=>{setEmail(e.target.value)}} placeholder='Email'/><br/>
                 <label>Password</label><br/>
                 <input type='password' value={password} onChange={e=>{setPassword(e.target.value)}} placeholder='Password'/><br/>
-                <a id="forgot-password" href="/forgot-password">Forgot Password</a><br/><br/>
-                <Link to="/register"><button id="create-account" >Create Account</button></Link>
+                <a id="forgot-password" href="/admin-forgotpassword">Forgot Password</a><br/><br/>
+                <Link to='/'><span id='user-login-inAdmin'>User SignIn</span></Link>
                 <button id="sign-in" type='submit'>Sign IN</button>
             </form>
         </div>
         </div>
-
         </>
     )
 }
 
-export default Login;
+export default AdminLogin

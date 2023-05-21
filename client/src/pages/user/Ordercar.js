@@ -60,6 +60,7 @@ function Ordercar() {
 
 
   const bookNow = (data) => {
+    console.log(data.photo)
     setCarData(data);
     navigate("/user-bookingconfirm")
   }

@@ -7,7 +7,7 @@ import { useAuth } from "../../context-api/auth-context";
 import toast from "react-hot-toast"
 import Home from './Home';
 
-function Login() {
+function AdminLogin() {
 
 
     const navigate = useNavigate()
@@ -54,18 +54,19 @@ function Login() {
             <Home/>
         <div className='row'>
         <div className='col-md-7 text-center div-1'>
-            <Link  to="/Register">Register</Link><Link to='/admin-login'>Admin Login</Link>
+            <h1>Welcome Admin</h1>
+           {/* <Link to='/'><span id='user-login-inAdmin'>User Login</span></Link> */}
             </div>
         </div>
         <div className="col-md-5 div-2">
             <form method='post' onSubmit={submitSignin}>
-                <h3 id='sign-in-div'>User-Sign In </h3><br/>
+                <h3 id='sign-in-div'>Admin-Sign In </h3><br/>
                 <label>Email</label><br/>
                 <input type='text' value={email} onChange={e=>{setEmail(e.target.value)}} placeholder='Email'/><br/>
                 <label>Password</label><br/>
                 <input type='password' value={password} onChange={e=>{setPassword(e.target.value)}} placeholder='Password'/><br/>
                 <a id="forgot-password" href="/forgot-password">Forgot Password</a><br/><br/>
-                <Link to="/Register"><button id="create-account" >Create Account</button></Link>
+                <Link to='/'><span id='user-login-inAdmin'>User Login</span></Link>
                 <button id="sign-in" type='submit'>Sign IN</button>
             </form>
         </div>
@@ -75,4 +76,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default AdminLogin;

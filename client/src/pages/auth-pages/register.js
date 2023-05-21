@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import "../styles/login.css"
 import axios from 'axios'
-import {useNavigate} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import toast from "react-hot-toast";
 import Home from './Home';
 
@@ -61,7 +61,7 @@ function Register() {
         <input className="input" type='password' id='confirm password' placeholder='Confirm Password'/>
         </div>
         <div><br/>
-        <button className='sign-in'>Sign In</button>
+        <Link to="/"><button className='sign-in'>Sign In</button></Link>
         <button className='register' type='submit'>Register</button>
         </div>
       </form>

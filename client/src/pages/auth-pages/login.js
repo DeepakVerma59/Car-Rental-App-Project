@@ -52,10 +52,28 @@ function Login() {
        
         <div className='main-container'>
             <Home/>
-        <div className='row'>
+            <h3 className='heading'>
+                <small className="text-muted display-6">The perfect car for your next trip is just around the corner...</small>
+
+              </h3>
+
+              <div class="wrapper one">
+        <div class="drop-main">
+            <div class="d">BOOK &nbsp;</div>
+            <div class="r">YOUR &nbsp;</div>
+            <div class="o">RIDE &nbsp; </div>
+            <div class="p">NOW &nbsp; </div>
+            <div class="s">!</div>
+        </div>
+    </div>
+
+
+
+        <div classNameName='row'>
         <div className='col-md-7 text-center div-1'>
             <Link to="/register">Register</Link><Link to='/'>Login</Link>
             </div>
+       
         </div>
         <div className="col-md-5 div-2">
             <form method='post' onSubmit={submitSignin}>

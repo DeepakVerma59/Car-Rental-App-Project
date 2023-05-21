@@ -61,13 +61,13 @@ function EditMyBooking() {
                             <div className="form-group row mt-4 ">
                                 <label for="carname" className="col-sm-2 col-form-label">Car name</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control " id="carname" value={bookingData.name} />
+                                    <input type="text" className="form-control-plaintext " id="carname" value={bookingData.name} />
                                 </div>
                             </div>
                             <div className="form-group row mt-4">
                                 <label for="CarNumber" className="col-sm-2 col-form-label">Car Number</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="CarNumber" value="HR 22N 6595" />
+                                    <input type="text" className="form-control-plaintext" id="CarNumber" value="HR 22N 6595" />
                                 </div>
                             </div>
                             <hr />
@@ -75,45 +75,45 @@ function EditMyBooking() {
                                 <label for="origin" className="col-sm-2 col-form-label">Origin</label>
 
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="origin" value={bookingData.origin} />
+                                    <input type="text" className="form-control-plaintext" id="origin" value={bookingData.origin} />
                                 </div>
                             </div>
 
                             <div className="form-group row mt-2">
                                 <label for="destination" className="col-sm-2 col-form-label">Destination</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="destination" value={bookingData.destination} />
+                                    <input type="text" className="form-control-plaintext" id="destination" value={bookingData.destination} />
                                 </div>
                             </div>
                             <div className="form-group row mt-2">
                                 <label for="startdate" className="col-sm-2 col-form-label">Start Date</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="startdate" value={bookingData.startDate} />
+                                    <input type="text" className="form-control-plaintext" id="startdate" value={bookingData.startDate} />
                                 </div>
                             </div>
                             <div className="form-group row mt-2">
                                 <label for="enddate" className="col-sm-2 col-form-label">End Date</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="enddate" value={bookingData.endDate} />
+                                    <input type="text" className="form-control-plaintext" id="enddate" value={bookingData.endDate} />
                                 </div>
                             </div>
                             <hr />
                             <div className="form-group row mt-2">
                                 <label for="bookingid" className="col-sm-2 col-form-label">Booking ID</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="bookingid" value={bookingData.bookingId} />
+                                    <input type="text" className="form-control-plaintext" id="bookingid" value={bookingData.bookingId} />
                                 </div>
                             </div>
                             <div className="form-group row mt-2">
                                 <label for="btime" className="col-sm-2 col-form-label">Booking Time</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="btime" value={bookingData.bookingTime} />
+                                    <input type="text" className="form-control-plaintext" id="btime" value={bookingData.bookingTime} />
                                 </div>
                             </div>
                             <div className="form-group row mt-2">
                                 <label for="bdate" className="col-sm-2 col-form-label">Booking Date</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="bdate" value={bookingData.bookingDate} />
+                                    <input type="text" className="form-control-plaintext" id="bdate" value={bookingData.bookingDate} />
                                 </div>
                             </div>
 
@@ -135,28 +135,28 @@ function EditMyBooking() {
                             <div className="form-group row mt-4 ">
                                 <label for="Priceperkm" className="col-sm-5 col-form-label">Price/KM</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control " id="Priceperkm" value={bookingData.pricePerKm} />
+                                    <input type="text" className="form-control-plaintext " id="Priceperkm" value={bookingData.pricePerKm} />
                                 </div>
                             </div>
 
                             <div className="form-group row mt-2">
                                 <label for="pricing" className="col-sm-5 col-form-label">Distance</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="pricing" value={Distance} />
+                                    <input type="text" className="form-control-plaintext" id="pricing" value={Distance} />
                                 </div>
                             </div>
 
                             <div className="form-group row mt-2">
                                 <label for="taxcharge" className="col-sm-5 col-form-label">Tax charges</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="taxcharge" value="18%" />
+                                    <input type="text" className="form-control-plaintext" id="taxcharge" value="18%" />
                                 </div>
                             </div>
                             <hr />
                             <div className="form-group row mt-2">
                                 <label for="subTotal" className="col-sm-5 col-form-label">Total</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control" id="subTotal" value={Total} />
+                                    <input type="text" className="form-control-plaintext" id="subTotal" value={Total} />
                                 </div>
                             </div>
                             <br />

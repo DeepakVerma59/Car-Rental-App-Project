@@ -31,10 +31,10 @@ function BookingCheck() {
 
     return(
         <>
-        <div className='booking-check-div'>
+        <div className='booking-check-div allbg '>
             <UserHeader/>
         {/*<nav id="home-nav"><AiFillCar size={30}/><div class="nav-right"><button className='nav-button' onClick={handleMyBooking}>My Bookings</button><button className='nav-button' onClick={handleLogout} >Logout</button></div></nav>*/}
-        <div className="check-form">
+        <div className="check-form bg">
             <form method='post' onSubmit={submitCheck}>
                 <h3>Check For Available Car Option According To Your Choice</h3>
                 <label htmlFor="">Start Date</label><br/>

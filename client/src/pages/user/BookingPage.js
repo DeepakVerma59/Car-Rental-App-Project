@@ -9,7 +9,6 @@ import { useAuth } from "../../context-api/auth-context"
 import GoogleMapReact from 'google-map-react';
 import { Icon } from '@iconify/react'
 import locationIcon from '@iconify/icons-mdi/map-marker'
-import OrderPageHeader from './orderpageheader/OrderPageHeader'
 
 import '../styles/map.css'
 
@@ -24,7 +23,7 @@ function BookingPage() {
   const date = new Date();
   let day = date.getDate() +"/"+ date.getMonth()+"/"+date.getFullYear()
   let hour = parseInt(date.getHours())
-  let ampm= hour===12 ?"AM":"PM"
+  let ampm= hour==12 ?"AM":"PM"
   let time = hour +":"+date.getMinutes()+" "+ampm;
   
   const Distance=Math.floor(Math.random()*300)
@@ -87,8 +86,7 @@ function BookingPage() {
   return (
     <>
     <UserHeader/>
-    <OrderPageHeader/>
-    {/* <div id='header'>
+    <div id='header'>
       <div className='container'>
         <form id="form" action="">
 
@@ -112,8 +110,8 @@ function BookingPage() {
           <Link to="/user-bookingcheck" id="modify" onClick={''}>MODIFY</Link>
         </form>
 
-      </div> */}
-    {/* </div> */}
+      </div>
+    </div>
     <div>
 <div className="card  card1 ">
   <div className="card-body mx-5" >

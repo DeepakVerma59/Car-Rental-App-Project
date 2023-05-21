@@ -18,7 +18,9 @@ export default function MyBookings() {
         try {
             const res = await axios.get(`${process.env.REACT_APP_PORT}/get-booking`)
             console.log(res.data.products)
-            setValue(res.data.products)
+            // setValue(res.data.products)
+              const filteredValue = res.data.products.filter(item=>auth?.user.id==item.userId);
+              setValue(filteredValue);           
             console.log(value)
         }
         catch (err) {

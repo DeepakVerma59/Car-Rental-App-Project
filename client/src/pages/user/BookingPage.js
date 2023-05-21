@@ -37,6 +37,7 @@ function BookingPage() {
     e.preventDefault();
     try{
       const bookingData = new FormData()
+        bookingData.append("userId",auth?.user.id)
         bookingData.append("name",carData.name);
         bookingData.append("carDetails",carData.carDetails);
         bookingData.append("details",carData.details);
@@ -44,6 +45,7 @@ function BookingPage() {
         bookingData.append("destination",orderHeader.destination);
         bookingData.append("startDate",orderHeader.startDate);
         bookingData.append("endDate",orderHeader.endDate);
+        bookingData.append('photo', carData.photo[0]);
         bookingData.append("bookingId",carData._id);
         bookingData.append("bookingDate",day);
         bookingData.append("bookingTime",time);
@@ -199,7 +201,12 @@ function BookingPage() {
 <Link to='/user-homepage'><button type="button" class="btn btn-outline-primary mt-4">Cancel</button></Link>
   </div>
 </div>
-
+<div className='mb-3'>
+                <img src={`${process.env.REACT_APP_PORT}/get-photo/${carData._id}`}
+                  alt='product-img'
+                  height={"120px"}
+                  className='img img-responsive' />
+            </div>
 
 
 <div className="card card2 ">

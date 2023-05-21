@@ -127,13 +127,15 @@ function Ordercar() {
           </ul>
         </div>
       </div>
+
+      <div className='d-flex flex-wrap ' style={{marginLeft:"90px"}}>
       {
         data.map(d => (
           <div key={d._id} className='carmodel'>
-            <div className="row row-cols-3 g-3 mt-2 pl-2 ">
+            <div className="row m-3">
               <div className="col">
                 <div className="card">
-                  <img className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" />
+                  <img style={{width:"250px" ,height:"166px"}} className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" />
                   <div className="card-body">
                     <div>
                       <span className="card-title" >{d.name}</span>
@@ -147,7 +149,10 @@ function Ordercar() {
               </div>
             </div>
           </div>
-        ))}
+
+        ))
+        
+        }</div>
     </>
   )
 }

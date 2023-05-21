@@ -43,7 +43,7 @@ const AdminHomePage = () => {
                 <div className="card-body">
                   <span style={{color:"gray",fontSize:"smaller"}}>6 persons</span>
                   <div>
-                    <span style={{fontWeight:"bold"}}>{p.name} {p.model}</span>
+                    <span style={{fontWeight:"bold"}}>{p.name}</span>
                     <span className='float-end' style={{fontWeight:"bold",color:"green"}}>{p.pricePerKm}₹/km</span>
                   </div>
                   <div>

@@ -58,7 +58,7 @@ function Ordercar() {
            <div key={d._id}>
             <div className="row row-cols-3 g-3 mt-2 pl-2">
               <div className="col">
-                <div className="card">
+                <div className="card ">
                   <img  className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`}  alt="car" />
                   <div className="card-body">
                     <div>

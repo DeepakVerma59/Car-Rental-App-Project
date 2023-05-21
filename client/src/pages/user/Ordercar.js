@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import "../styles/adminhome.css"
+//  
 import UserHeader from './userHeader'
 import { useAuth } from "../../context-api/auth-context"
 import { useCar } from '../../context-api/carContaxt'
@@ -127,13 +127,15 @@ function Ordercar() {
           </ul>
         </div>
       </div>
-      {
+      
+        <div className='d-flex flex-wrap' style={{marginLeft:"90px"}}>
+          {
         data.map(d => (
           <div key={d._id}>
-            <div className="row row-cols-3 g-3 mt-2 pl-2">
+            <div className="row m-3">
               <div className="col">
                 <div className="card">
-                  <img className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" />
+                  <img className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" style={{width:"250px",height:"166px"}}/>
                   <div className="card-body">
                     <div>
                       <span className="card-title" >{d.name}</span>
@@ -148,8 +150,8 @@ function Ordercar() {
             </div>
           </div>
         ))}
+  </div>
     </>
   )
-}
-
+        }
 export default Ordercar

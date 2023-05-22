@@ -112,8 +112,8 @@ const EditProducts = () => {
 
   return (
     <>
-      <div className='container-fluid m-3 p-3 allbg'>
         <Header />
+      <div className='container-fluid m-3 p-3 allbg'>
         <div className='row'>
           <h2 className='mb-5'>Edit Car Details</h2>
           <div className='col-md-7'>

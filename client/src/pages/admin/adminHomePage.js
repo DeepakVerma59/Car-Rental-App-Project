@@ -30,8 +30,8 @@ const AdminHomePage = () => {
   return (
     <>
       <Header />
-      <div className='main allbg'>
-      <h1> Welcome {auth?.user.name}</h1>
+      <div className='main allbg' style={{marginLeft:"100px"}}>
+      <h1> Welcome Admin...</h1>
         <div className="car" style={{fontWeight:"bold"}}>Cars</div>
         <Link to="/admin-addproducts">
           <button type="button" className=" button btn btn-primary">Add Cars</button></Link>
@@ -40,8 +40,8 @@ const AdminHomePage = () => {
           <div className='d-flex flex-wrap m-3'>
             {products?.map(p => (
               <Link to={`/admin-editproducts/${p._id}`} key={p._id} style={{textDecoration:"none"}}>
-              <div className="card" style={{ width:"15rem"}}>
-                <img src={`${process.env.REACT_APP_PORT}/get-photo/${p._id}`} className="card-img-top" alt={p.name} style={{width:"auto",height:"100px"}}/>
+              <div className="card">
+                <img src={`${process.env.REACT_APP_PORT}/get-photo/${p._id}`} className="card-img-top" alt={p.name} style={{width:"225px",height:"126px"}}/>
                 <div className="card-body">
                   <span style={{color:"gray",fontSize:"smaller"}}>6 persons</span>
                   <div>

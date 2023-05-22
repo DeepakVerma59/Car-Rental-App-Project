@@ -81,8 +81,8 @@ function Login() {
                 <input type='text' value={email} onChange={e=>{setEmail(e.target.value)}} placeholder='Email'/><br/>
                 <label>Password</label><br/>
                 <input type='password' value={password} onChange={e=>{setPassword(e.target.value)}} placeholder='Password'/><br/>
-                <a id="forgot-password" href="/forgot-password">Forgot Password</a><br/><br/>
-                <Link to="/register"><button id="create-account" >Create Account</button></Link>
+                <Link to="/forgot-password" style={{textDecoration:"none"}}><span>Forgot Password</span></Link><br/>
+                <Link to="/register"><button id="create-account" className='mt-4' >Create Account</button></Link>
                 <button id="sign-in" type='submit'>Sign IN</button>
             </form>
         </div>

@@ -7,32 +7,33 @@ import { Link ,useNavigate} from 'react-router-dom';
 import { useCar } from '../../context-api/carContaxt';
 
 
-
 function BookingCheck() {
+
     const navigate = useNavigate()
     const [startDate, setStartDate] = useState('')
     const [endDate, setEndDate] = useState('')
     const [origin, setOrigin] = useState('')
     const [destination, setDestination] = useState('')
-
     const [orderHeader,setOrderHeader] = useCar()
+
     function submitCheck(e){
         e.preventDefault();
     setOrderHeader({
         ...orderHeader,
-        "startDate":startDate,
-        "endDate":endDate,
-        "origin":origin,
-        "destination":destination
+        startDate:startDate,
+        endDate:endDate,
+        origin:origin,
+        destination:destination
     })
+    localStorage.setItem("order", JSON.stringify({startDate,endDate,origin,destination}));
     navigate('/user-homepage')
 }
 
 
     return(
         <>
-        <div className='booking-check-div allbg '>
             <UserHeader/>
+        <div className='booking-check-div allbg '>
         {/*<nav id="home-nav"><AiFillCar size={30}/><div class="nav-right"><button className='nav-button' onClick={handleMyBooking}>My Bookings</button><button className='nav-button' onClick={handleLogout} >Logout</button></div></nav>*/}
         <div className="check-form bg">
             <form method='post' onSubmit={submitCheck}>

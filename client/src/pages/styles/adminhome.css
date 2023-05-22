@@ -32,8 +32,14 @@
 }
 .allbg{
     background-color:rgb(244, 242, 242);
-    padding: 20px;
+    padding: 20px; 
 }
+.card{
+    box-shadow: 6px 6px 6px 6px #00000029;
+opacity: 1;
+
+}
+
 
 
 

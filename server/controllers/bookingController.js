@@ -48,7 +48,7 @@ const createBookingController = async(req,res)=>{
 
     const updateBookingController = async(req,res)=>{
         try{
-            const {name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime,pricePerKm,photo} = req.fields;
+            const {name,carDetails,details,origin,destination,startDate,endDate,bookingId,bookingDate,bookingTime,pricePerKm,photo} = req.body;
             const {pid} = req.params
            
             if(!name){res.status(500).send({error:"name is required"})};
@@ -65,11 +65,7 @@ const createBookingController = async(req,res)=>{
             if(photo && photo.size>100000){res.status(500).send({error:"photo is required and size less than 1 mb"})};
            
            
-            const product = await bookingModel.findByIdAndUpdate(pid,{...req.fields},{new:true})
-            if(photo){
-               product.photo.data = fs.readFileSync(photo.path,"utf-8");
-               product.photo.contentType = photo.type;
-            }
+            const product = await bookingModel.findByIdAndUpdate(pid,{...req.body},{new:true})
             await product.save();
             res.status(201).send({
                success:true,

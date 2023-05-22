@@ -15,7 +15,7 @@ function EditMyBooking() {
     const navigate = useNavigate()
     const params = useParams()
     const [orderHeader, setOrderHeader, carData, setCarData] = useCar()
-    const [bookingData, setBookingData] = useState("")
+    const [bookingData, setBookingData] = useState({})
 
     const date = new Date();
     let day = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()
@@ -23,22 +23,17 @@ function EditMyBooking() {
     let ampm = hour == 12 ? "AM" : "PM"
     let time = hour + ":" + date.getMinutes() + " " + ampm;
 
-    const Distance = Math.floor(Math.random() * 300)
+    const Distance = 200
     const Pricing = parseInt(bookingData.pricePerKm)
     const Subtotal = (Pricing * Distance)
     const Tax = parseInt((Subtotal) * 0.18);
     const Total = Subtotal + Tax;
-    const [destination,setDestination] = useState("");
-    const [origin,setOrigin] = useState("");
-    const [startDate,setStartDate] = useState("");
-    const [endDate,setEndDate]=useState("")
+    
 
     const getSingleBooking = async () => {
         try {
             const res = await axios.get(`${process.env.REACT_APP_PORT}/get-booking/${params.id}`);
             setBookingData(res.data.singleBooking)
-            setStartDate(res.data.singleBooking.startDate)
-            setEndDate(res.data.singleBooking.endDate)
         }
         catch (err) {
             console.log(err)
@@ -47,19 +42,28 @@ function EditMyBooking() {
     }
 
     useEffect(() => {
-        getSingleBooking();
+        getSingleBooking();  
     }, [])
 
 
     async function handleSubmit() {
-        const res = await axios.put(`${process.env.REACT_APP_PORT}/update-booking/${bookingData._id}`,{startDate,endDate},
+        try{
+            console.log(bookingData)
+        const res = await axios.put(`${process.env.REACT_APP_PORT}/update-booking/${bookingData._id}`,bookingData,
         {
             headers: {
               Authorization: `${auth?.token}`
             }
           })
+          if(res.data.success){
           toast.success("updated successfully")
-        navigate(`/user-bookings/${carData._id}`)
+        navigate(`/user-editbooking/:id`)
+          }
+        }
+        catch(err){
+            console.log(err)
+            toast.error(err)
+        }
     }
     return (
         <>
@@ -67,7 +71,7 @@ function EditMyBooking() {
             <div>
                 <div className="card  card1 ">
                     <div className="card-body mx-5" >
-                        <h5 className="card-title">Booking details</h5>
+                        <h5 className="card-title">Edit Booking details</h5>
 
                         <form >
                             <div className="form-group row mt-4 ">
@@ -99,7 +103,7 @@ function EditMyBooking() {
                                
 
                                 <div id="map-of-the-edit-payment-details">
-                                    <Map origin={origin} destination={destination} className='map-of-doom image-of-hte-map-of-the-edit-page' />
+                                    <Map origin={bookingData.origin} destination={bookingData.destination} className='map-of-doom image-of-hte-map-of-the-edit-page' />
                                 </div>
 
 
@@ -107,13 +111,13 @@ function EditMyBooking() {
                             <div className="form-group row mt-2">
                                 <label for="startdate" className="col-sm-2 col-form-label">Start Date</label>
                                 <div className="col-sm-5">
-                                    <input type="date" className="form-control-plaintext" id="startdate" value={startDate} onChange={(e)=>setStartDate(e.target.value)}/>
+                                    <input type="date" className="form-control-plaintext" id="startdate" value={bookingData.startDate} onChange={(e)=>setBookingData({...bookingData,startDate:e.target.value})}/>
                                 </div>
                             </div>
                             <div className="form-group row mt-2">
                                 <label for="enddate" className="col-sm-2 col-form-label">End Date</label>
                                 <div className="col-sm-5">
-                                    <input type="date" className="form-control-plaintext" id="enddate" value={endDate} onChange={(e)=>setEndDate(e.target.value)} />
+                                    <input type="date" className="form-control-plaintext" id="enddate" value={bookingData.endDate} onChange={(e)=>setBookingData({...bookingData,endDate:e.target.value})} />
                                 </div>
                             </div>
                             <hr />
@@ -158,12 +162,12 @@ function EditMyBooking() {
                                 </div>
                             </div>
 
-                            {/* <div className="form-group row mt-2">
+                            {<div className="form-group row mt-2">
                                 <label for="pricing" className="col-sm-5 col-form-label">Distance</label>
                                 <div className="col-sm-5">
                                     <input type="text" className="form-control-plaintext" id="pricing" value={Distance} />
                                 </div>
-                            </div> */}
+                            </div> }
 
                             <div className="form-group row mt-2">
                                 <label for="taxcharge" className="col-sm-5 col-form-label">Tax charges</label>
@@ -188,7 +192,7 @@ function EditMyBooking() {
                         </form>
 
                     </div>
-                    <button type="button" onClick={handleSubmit} className="btn  btn-primary btn-lg btn-block mx-4">Update</button>
+                    <button type="button" onClick={()=>handleSubmit()} className="btn  btn-primary btn-lg btn-block mx-4">Update</button>
                 </div>
             </div>
         </>

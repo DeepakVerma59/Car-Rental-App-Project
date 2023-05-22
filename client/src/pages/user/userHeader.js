@@ -15,6 +15,8 @@ const UserHeader = () => {
             token: ""
         })
         localStorage.removeItem("auth");
+        localStorage.removeItem("order");
+        localStorage.removeItem("cardata");
         toast.success("logout successful")  
         navigate("/")
      }
@@ -24,12 +26,12 @@ const UserHeader = () => {
 
     return (
         <>
-            <nav className="navbar navbar-light bg-light">
+            <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
                 <div className="container-fluid">
-                    <Link to="/" className="navbar-brand"><AiFillCar size={30}/></Link>
+                    <Link to="/user-bookingcheck" className="navbar-brand"><AiFillCar size={50}/></Link>
                     <form className="d-flex px-5">
-                        <button className="btn mx-4 btn-outline-success" type="submit" onClick={handleMyBooking}>My Bookings</button>
-                        <button className="btn btn-outline-success" type="submit" onClick={handleLogout}>Logout</button>
+                        <button className="btn mx-4 btn-success" type="submit" onClick={handleMyBooking}>My Bookings</button>
+                        <button className="btn btn-success" type="submit" onClick={handleLogout}>Logout</button>
                     </form>
                 </div>
             </nav>

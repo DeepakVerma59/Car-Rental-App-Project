@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams,useNavigate } from "react-router-dom"
 import axios from "axios"
 import "../styles/myBooking.css"
 import UserHeader from "./userHeader"
@@ -10,6 +10,7 @@ import { useAuth } from "../../context-api/auth-context"
 
 
 export default function MyBookings() {
+  const navigate = useNavigate()
   const [auth] = useAuth();
   const [orderHeader, carData] = useCar()
   const params = useParams();
@@ -19,7 +20,7 @@ export default function MyBookings() {
       const res = await axios.get(`${process.env.REACT_APP_PORT}/get-booking`)
       console.log(res.data.products)
       // setValue(res.data.products)
-      const filteredValue = res.data.products.filter(item => auth?.user.id == item.userId);
+      const filteredValue = res.data.products.filter(item => auth?.user.id === item.userId);
       setValue(filteredValue);
       console.log(value)
     }
@@ -30,7 +31,7 @@ export default function MyBookings() {
 
   useEffect(() => {
     getBookingProduct();
-  }, [value])
+  },[])
 
   // const handleUpdate = async (e) => {
   //     e.preventDefault();
@@ -79,7 +80,7 @@ export default function MyBookings() {
         })
       if (res.data.success) {
         toast.success(res.data.message);
-        window.location.reload();
+        navigate("/user-homepage")
       }
     }
     catch (err) {
@@ -90,11 +91,11 @@ export default function MyBookings() {
 
   return <>
 
-    <div id="outer" className="allbg">
       <UserHeader />
+    <div id="outer" className="allbg">
       <p>My Booking </p>
       {
-        value.map(v => (
+        value?.map(v => (
 
           <div className="bookings">
             <div id="myimg" className="smallerDiv" >
@@ -112,11 +113,12 @@ export default function MyBookings() {
               <div><span id="booking-label">Origin:{v.origin} </span></div>
               <div><span id="booking-label">Destination:{v.destination} </span></div>
               <div> <span id="booking-label">Start Date:{v.startDate}</span></div>
-              <div><span id="booking-label">Start Date:{v.endDate} </span></div>
+              <div><span id="booking-label">End Date:{v.endDate} </span></div>
             </div>
-            <div id="map-of-the-edit-payment-details">
-              <Map origin={orderHeader.origin} destination={orderHeader.destination} className='map-of-doom image-of-hte-map-of-the-edit-page' />
-            </div>
+
+            {/* <div className="smallerDiv">
+              <Map origin={v.origin} destination={v.destination} alt="map" />
+            </div> */}
 
             <div className="smallerDiv">
               <h6> <span id="booking-label">Booking ID</span>:{v.bookingId}</h6>

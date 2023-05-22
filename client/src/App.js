@@ -6,7 +6,7 @@ import Login from './pages/auth-pages/login';
 import Forgotpassword from './pages/auth-pages/forgotpassword';
 import AdminHomePage from './pages/admin/adminHomePage';
 import AddProducts from './pages/admin/addProducts';
-import PageNotFound from './pages/PageNotFound';
+import PageNotFound from './pages/auth-pages/PageNotFound';
 import EditProducts from './pages/admin/EditProducts';
 import Ordercar from './pages/user/Ordercar';
 

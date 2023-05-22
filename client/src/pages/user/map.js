@@ -3,7 +3,7 @@ import { useCar } from "../../context-api/carContaxt";
 
 
 function Map(props) {
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState([]);
   const [directionsService, setDirectionsService] = useState(null);
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
   const {orderHeader} = useCar()
@@ -71,7 +71,7 @@ function Map(props) {
     }
   }, [origin, destination, directionsService, directionsRenderer, map]);
 
-  return <div id="map" style={{width: "17vw", height: "15vh" }}></div>;
+  return <div id="map"></div>;
 }
 
 export default Map ;

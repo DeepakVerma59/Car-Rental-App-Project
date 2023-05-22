@@ -17,6 +17,7 @@ import MyBookings from './pages/user/myBookings';
 import BookingPage from './pages/user/BookingPage';
 import AdminLogin from './pages/auth-pages/adminLogin';
 import AdminRegister from './pages/auth-pages/adminRegister';
+import AdminForgotPassword from './pages/auth-pages/AdminForgotPassword';
 
 
 
@@ -36,8 +37,11 @@ function App() {
     <Route path='/user-bookings/:id' element={<MyBookings/>}/>
     <Route path='/user-bookingconfirm' element={<BookingPage/>}/>
     <Route path='/user-editbooking/:id' element={<EditMyBooking/>}/>
-
     <Route path='/forgot-password' element={<Forgotpassword/>}/>
+
+    <Route path='/admin-login' element={<AdminLogin/>}/>
+    <Route path='/admin-register' element={<AdminRegister/>}/>
+    <Route path='/admin-forgotpassword' element={<AdminForgotPassword/>}/>
     <Route path='/admin-homepage' element={<AdminHomePage/>}/>
     <Route path='/admin-addproducts' element={<AddProducts/>}/>
     <Route path='/admin-editproducts/:id' element={<EditProducts/>}/>

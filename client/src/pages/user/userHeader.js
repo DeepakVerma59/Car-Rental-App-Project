@@ -15,9 +15,9 @@ const UserHeader = () => {
             user: null,
             token: ""
         })
-        localStorage.removeItem(auth);
-        toast.success("logout successful")
-        navigate("/")  
+        localStorage.removeItem("auth");
+        toast.success("logout successful")  
+        navigate("/")
      }
      const handleMyBooking=()=>{
         navigate("/user-bookings/:id")

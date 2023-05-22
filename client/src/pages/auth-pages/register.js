@@ -39,7 +39,7 @@ function Register() {
     <div className="main-container">
       <Home/>
       <div className='div-2-register'>
-    <h3 id=''>Register in your account</h3>
+    <h3 id=''>User Register</h3>
       <form action='/register' method='post' onSubmit={submitData}>
         <div>
         <label>Name</label><br/>

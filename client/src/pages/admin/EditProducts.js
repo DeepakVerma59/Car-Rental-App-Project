@@ -41,8 +41,7 @@ const EditProducts = () => {
       setDescription(res.data.singleProduct.description)
       setCarDetails(res.data.singleProduct.carDetails)
       setDetails(res.data.singleProduct.details)
-
-
+      
     }
     catch (err) {
       console.log(err)
@@ -59,6 +58,7 @@ const EditProducts = () => {
     e.preventDefault();
     try {
       const productData = new FormData()
+      productData.append("adminId",auth.user.id)
       productData.append("name", name);
       productData.append("type", type);
       productData.append("model", model);
@@ -200,8 +200,15 @@ const EditProducts = () => {
 
             <label className="form-label">Images</label>
             <div className='mb-3'>
-              {photo ? (
-      
+              <label className='btn btn-primary'>
+                {photo ? photo.name : "ADD"}
+                <input type="file" name='photo' accept="image/*"
+                  onChange={(e) => setPhoto(e.target.files[0])}
+                  hidden />
+              </label>
+            </div>
+            <div className='mb-3'>
+              {photo ? (     
                   <img src={URL.createObjectURL(photo)}
                     alt='product-img'
                     height={"120px"}
@@ -213,14 +220,6 @@ const EditProducts = () => {
                   height={"120px"}
                   className='img img-responsive' />
               )}
-            </div>
-            <div className='mb-3'>
-              <label className='btn btn-primary'>
-                {photo ? photo.name : "ADD"}
-                <input type="file" name='photo' accept="image/*"
-                  onChange={(e) => setPhoto(e.target.files[0])}
-                  hidden />
-              </label>
             </div>
           
 

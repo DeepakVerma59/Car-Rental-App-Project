@@ -6,11 +6,8 @@ import {Link, useNavigate} from "react-router-dom"
 import toast from 'react-hot-toast'
 import axios from 'axios'
 import { useAuth } from "../../context-api/auth-context"
-import GoogleMapReact from 'google-map-react';
-import { Icon } from '@iconify/react'
-import locationIcon from '@iconify/icons-mdi/map-marker'
+import Map from './map'
 import "./orderpageheader/orderPageHeader.css"
-
 import '../styles/map.css'
 
 
@@ -33,6 +30,7 @@ function BookingPage() {
   const Tax = parseInt((Subtotal)*0.18);
   const Total = Subtotal + Tax;
 
+
   const handleSubmit =async(e)=>{
     e.preventDefault();
     try{
@@ -45,15 +43,13 @@ function BookingPage() {
         bookingData.append("destination",orderHeader.destination);
         bookingData.append("startDate",orderHeader.startDate);
         bookingData.append("endDate",orderHeader.endDate);
-        bookingData.append('photo', carData.photo[0]);
         bookingData.append("bookingId",carData._id);
         bookingData.append("bookingDate",day);
         bookingData.append("bookingTime",time);
         bookingData.append("pricePerKm",carData.pricePerKm);
+      
         
-        
-    const res = await axios.post(`${process.env.REACT_APP_PORT}/create-booking` ,{bookingData,
-      photo:carData.photo},
+    const res = await axios.post(`${process.env.REACT_APP_PORT}/create-booking` ,bookingData,
     {headers:
       {Authorization:`${auth?.token}`}})
   
@@ -70,21 +66,6 @@ function BookingPage() {
       toast.error("something went wrong");
 
     }
-  }
-  
-  const LocationPin = ({ text }) => (
-    <div className="pin">
-      <Icon icon={locationIcon} className="pin-icon" />
-      <p className="pin-text">{text}</p>
-    </div>
-  )   
-
-  const location = {
-    center:{
-    lat: 19.075983,
-    lng: 72.877655
-    },
-    zoom:11
   }
 
   return (
@@ -183,7 +164,7 @@ function BookingPage() {
   
 
 </form>
-<div className="map">
+{/* <div className="map">
 
     <div className="google-map">
       <GoogleMapReact
@@ -197,6 +178,9 @@ function BookingPage() {
         />
       </GoogleMapReact>
     </div>
+  </div> */}
+  <div id="map-of-the-payment-page-we-change-that-position">
+  <Map origin={orderHeader.origin} destination={orderHeader.destination} className='mai-hoon-map'/>
   </div>
     
 <Link to='/user-homepage'><button type="button" class="btn btn-outline-primary mt-4">Cancel</button></Link>

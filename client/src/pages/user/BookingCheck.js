@@ -25,6 +25,7 @@ function BookingCheck() {
         "origin":origin,
         "destination":destination
     })
+    localStorage.setItem("order", JSON.stringify(...orderHeader))
     navigate('/user-homepage')
 }
 

@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const userModel = require("../models/register");
+const userModel = require("../models/user");
 
 const requireSignin=async(req,res,next)=>{
  try{
@@ -13,20 +13,5 @@ const requireSignin=async(req,res,next)=>{
  }
 }
 
-const isAdmin = async(req,res,next)=>{
-  try{
-   const user = await userModel.findById(req.user._id);
-   if(!user.role){
-    return res.status(401).send("unauthorized access")
-   }
-   else{
-    next()
-   }
-  }
-  catch(err){
-    console.log(err)
-    res.status(500).send(err)
- }
-}
 
-module.exports = {requireSignin,isAdmin}
+module.exports = {requireSignin}

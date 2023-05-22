@@ -31,11 +31,7 @@ function Login() {
                     token: res.data.token
                 })
                 localStorage.setItem("auth", JSON.stringify(res.data));
-                if(res.data.user.role==true){
-                    navigate('/admin-homepage')
-                }
-                else{
-                navigate("/user-bookingcheck")}
+                navigate("/user-bookingcheck")
             }
             else {
                 toast.error(res.data.message);
@@ -73,12 +69,13 @@ function Login() {
         <div className='col-md-7 text-center div-1'>
             <Link to="/admin-register">Admin SignUp</Link><Link to='/admin-login'>Admin SignIn</Link><br/>
             <Link to="/Register">User SignUp</Link><Link to='/'>User SignIn</Link>
+            
             </div>
-       
+            
         </div>
         <div className="col-md-5 div-2">
             <form method='post' onSubmit={submitSignin}>
-                <h3 id='sign-in-div'>User-Sign In </h3><br/>
+                <h3 id='sign-in-div'> User Sign In </h3><br/>
                 <label>Email</label><br/>
                 <input type='text' value={email} onChange={e=>{setEmail(e.target.value)}} placeholder='Email'/><br/>
                 <label>Password</label><br/>

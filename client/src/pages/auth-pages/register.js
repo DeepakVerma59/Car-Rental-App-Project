@@ -12,9 +12,11 @@ function Register() {
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
   const [contact,setContact] = useState("");
+  const [loader,setLoader] = useState(false)
     
   const submitData=async(e)=>{
     e.preventDefault();
+    setLoader(true)
    //  console.log(name,email,password,phone,address)
    try{
     const res = await axios.post(`${process.env.REACT_APP_PORT}/register`,{
@@ -62,7 +64,7 @@ function Register() {
         </div>
         <div><br/>
        <Link to="/"><button className='sign-in'>Sign In</button></Link> 
-        <button className='register' type='submit'>Register</button>
+        <button className='register' type='submit'>{loader?<div id= "spinner"></div> :"REGISTER"}</button>
         </div>
       </form>
       </div>

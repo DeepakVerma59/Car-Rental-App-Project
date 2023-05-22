@@ -67,7 +67,7 @@ const EditProducts = () => {
       productData.append("availableFrom", availableFrom);
       productData.append("availableTill", availableTill);
       productData.append("description", description);
-      productData.append("photo", photo);
+      // productData.append("photo", photo);
       productData.append("carDetails", carDetails);
       productData.append("details", details);
 
@@ -79,7 +79,7 @@ const EditProducts = () => {
         })
 
       if (res.data.success) {
-        toast.success("product created successfully");
+        toast.success("product updated successfully");
         navigate("/admin-homepage");
       }
       else {
@@ -215,7 +215,7 @@ const EditProducts = () => {
                     className='img img-responsive' />
                 
               ) : (
-                <img src={`${process.env.REACT_APP_PORT}/get-photo/${id}`}
+                <img src={`${process.env.REACT_APP_PORT}/get-photo/${params.id}`}
                   alt='product-img'
                   height={"120px"}
                   className='img img-responsive' />

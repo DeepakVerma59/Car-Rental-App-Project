@@ -33,42 +33,6 @@ export default function MyBookings() {
     getBookingProduct();
   },[])
 
-  // const handleUpdate = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //       const productData = new FormData()
-  //       productData.append("name", name);
-  //       productData.append("type", type);
-  //       productData.append("model", model);
-  //       productData.append("mileage", mileage);
-  //       productData.append("pricePerKm", pricePerKm);
-  //       productData.append("availableFrom", availableFrom);
-  //       productData.append("availableTill", availableTill);
-  //       productData.append("description", description);
-  //       productData.append("photo", photo);
-  //       productData.append("carDetails", carDetails);
-  //       productData.append("details", details);
-
-  //       const res = await axios.put(`${process.env.REACT_APP_PORT}/update-product/${params.id}`, productData,
-  //         {
-  //           headers: {
-  //             Authorization: `${auth?.token}`
-  //           }
-  //         })
-
-  //       if (res.data.success) {
-  //         toast.success("product created successfully");
-  //         navigate("/admin-homepage");
-  //       }
-  //       else {
-  //         toast.error(res.data?.message)
-  //       }
-  //     }
-  //     catch (err) {
-  //       console.log(err)
-  //       toast.error("something went wrong");
-  //     }
-  //   }
 
   const handleDelete = async (id) => {
     try {
@@ -103,17 +67,17 @@ export default function MyBookings() {
             </div>
 
             <div id="car" className="smallerDiv">
-              <h6 >Name: {v.name}</h6>
-              <h6>HR 22N 6595</h6>
-              <h6>Details:{v.details} </h6>
-              <h6>Car Details:{v.carDetails}</h6>
+            <h6><span id="booking-label">Name</span>: {v.name}</h6>
+            <h6><span id="booking-label">Car No</span>: HR 22N 6595</h6>
+            <h6><span id="booking-label">Details</span>: {v.details}</h6>
+            <h6><span id="booking-label">Car Details</span>: {v.carDetails}</h6>
             </div>
 
             <div className="smallerDiv">
-              <div><span id="booking-label">Origin:{v.origin} </span></div>
-              <div><span id="booking-label">Destination:{v.destination} </span></div>
-              <div> <span id="booking-label">Start Date:{v.startDate}</span></div>
-              <div><span id="booking-label">End Date:{v.endDate} </span></div>
+            <h6><span id="booking-label">Origin</span>: {v.origin}</h6>
+            <h6><span id="booking-label">Destination</span>: {v.destination}</h6>
+            <h6><span id="booking-label">Start Date</span>: {v.startDate}</h6>
+            <h6><span id="booking-label">End Date</span>: {v.endDate}</h6>
             </div>
 
             {/* <div className="smallerDiv">
@@ -121,9 +85,9 @@ export default function MyBookings() {
             </div> */}
 
             <div className="smallerDiv">
-              <h6> <span id="booking-label">Booking ID</span>:{v.bookingId}</h6>
-              <h6> <span id="booking-label">Booking Date</span>:{v.bookingDate}</h6>
-              <h6> <span id="booking-label" >Booking Time</span>:{v.bookingTime}</h6>
+              <h6> <span id="booking-label">Booking ID</span>: {(v.bookingId).slice(-10)}</h6>
+              <h6> <span id="booking-label">Booking Date</span>: {v.bookingDate}</h6>
+              <h6> <span id="booking-label" >Booking Time</span>: {v.bookingTime}</h6>
             </div>
             <div className="smallerDiv" >
               <div className="buttons">

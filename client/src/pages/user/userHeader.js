@@ -10,15 +10,12 @@ const UserHeader = () => {
     const [auth, setAuth] = useAuth();
 
     const handleLogout = () => {
-        setAuth({
-            user: null,
-            token: ""
-        })
-        localStorage.removeItem("auth");
-        localStorage.removeItem("order");
-        localStorage.removeItem("cardata");
+        localStorage.clear()
         toast.success("logout successful")  
         navigate("/")
+        // function preventBack() { window.history.forward(); }
+        // setTimeout(preventBack(), 0);
+        // window.onunload = function () { null };
      }
      const handleMyBooking=()=>{
         navigate("/user-bookings/:id")

@@ -221,7 +221,7 @@ function BookingPage() {
               <br />
               <div className="custom-control custom-checkbox">
                 <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                <label className="custom-control-label mx-2" for="customCheck1">check me</label>
+                <label style={{fontSize:15 }} className="custom-control-label mx-2" for="customCheck1" > I Agree To "Terms And Conditions"</label>
               </div>
               <br />
             </form>

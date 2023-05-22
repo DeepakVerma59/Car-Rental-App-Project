@@ -60,6 +60,7 @@ p{
 #booking-label{
     color: black;
     margin-left: 10px;
+    font-weight: bold;
 }
 #Abcdefghijklmn{
     width: 100%;
@@ -69,4 +70,9 @@ p{
 .allbg{
     background-color:rgb(244, 242, 242);
     padding: 20px;
+}
+h6{
+    font-weight: bold;
+    color: black;
+    font-size: 18px;
 }

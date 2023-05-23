@@ -25,13 +25,13 @@ const AdminHomePage = () => {
 
   useEffect(() => {
     getAllProducts()
-  }, [])
+  }, [products])
 
   return (
     <>
       <Header />
-      <div className='main allbg'>
-      <h1> Welcome </h1>
+      <div className='main allbg' style={{marginLeft:"100px"}}>
+      <h1> Welcome Admin...</h1>
         <div className="car" style={{fontWeight:"bold"}}>Cars</div>
         <Link to="/admin-addproducts">
           <button type="button" className=" button btn btn-primary">Add Cars</button></Link>
@@ -40,8 +40,8 @@ const AdminHomePage = () => {
           <div className='d-flex flex-wrap m-3'>
             {products?.map(p => (
               <Link to={`/admin-editproducts/${p._id}`} key={p._id} style={{textDecoration:"none"}}>
-              <div className="card" style={{ width:"15rem"}}>
-                <img src={`${process.env.REACT_APP_PORT}/get-photo/${p._id}`} className="card-img-top" alt={p.name} style={{width:"auto",height:"100px"}}/>
+              <div className="card">
+                <img src={`${process.env.REACT_APP_PORT}/get-photo/${p._id}`} className="card-img-top" alt={p.name} style={{width:"240px",height:"135px"}}/>
                 <div className="card-body">
                   <span style={{color:"gray",fontSize:"smaller"}}>6 persons</span>
                   <div>
@@ -49,8 +49,8 @@ const AdminHomePage = () => {
                     <span className='float-end' style={{fontWeight:"bold",color:"green"}}>{p.pricePerKm}₹/km</span>
                   </div>
                   <div>
-                    <span style={{color:"gray",fontSize:"smaller"}}>available</span>
-                    <span className='float-end'>{p.availableFrom}-{p.availableTill}</span>
+                    <span style={{color:"gray",fontSize:"smaller"}}>available:&nbsp;</span>
+                    <span className='float-end' style={{fontWeight:"bold"}}>{p.availableFrom} to {p.availableTill}</span>
                   </div>
                 </div>
               </div>

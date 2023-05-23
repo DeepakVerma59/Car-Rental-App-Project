@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import "../styles/adminhome.css"
+import "../styles/orderCar.css"
 import UserHeader from './userHeader'
 import { useAuth } from "../../context-api/auth-context"
 import { useCar } from '../../context-api/carContaxt'
 import toast from "react-hot-toast"
 import axios from 'axios'
+import OrderPageHeader from './OrderPageHeader'
 
 
 function Ordercar() {
@@ -14,6 +15,10 @@ function Ordercar() {
   const [auth] = useAuth();
   const [orderHeader, setOrderHeader, carData, setCarData] = useCar()
   let [data, setdata] = useState([])
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
+  const [origin, setOrigin] = useState('')
+  const [destination, setDestination] = useState('')
   const [filter,setFilter] = useState({
     XUV:false,
     UV:false,
@@ -59,41 +64,18 @@ function Ordercar() {
   }, [filter])
 
 
+
   const bookNow = (data) => {
     console.log(data.photo)
     setCarData(data);
+    localStorage.setItem("cardata",JSON.stringify(data))
     navigate("/user-bookingconfirm")
   }
 
   return (
     <>
       <UserHeader />
-      <div id='header'>
-        <div className='container'>
-          <form id="form" action="">
-
-            <li className='Origin'
-            > {orderHeader.origin}
-
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-              </svg>
-
-             {orderHeader.destination}</li>
-
-            <li type="date" className="Origin"
-            >{orderHeader.startDate}
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
-              </svg>
-             {orderHeader.endDate}</li>
-
-
-            <Link to="/user-bookingcheck" id="modify" onClick={""}>MODIFY</Link>
-          </form>
-
-        </div>
-      </div>
+     <OrderPageHeader/>
       <div className='header head'>
         <div className="dropdown">
           <button type="button" className="btn button btn-primary dropdown-toggle" data-bs-toggle="dropdown">
@@ -111,9 +93,9 @@ function Ordercar() {
             Seating
           </button>
           <ul className="dropdown-menu">
-            <li><Link className="dropdown-item" to="#">6 seater</Link></li>
-            <li><Link className="dropdown-item" to="#">8 seater</Link></li>
-            <li><Link className="dropdown-item" to="#">All</Link></li>
+            <li>6 seater</li>
+            <li>8 seater</li>
+            <li>All</li>
           </ul>
         </div>
 
@@ -122,9 +104,9 @@ function Ordercar() {
             Milage
           </button>
           <ul className="dropdown-menu">
-            <li><Link className="dropdown-item" to="#">15 KM/Hour</Link></li>
-            <li><Link className="dropdown-item" to="#">12 KM/Hour</Link></li>
-            <li><Link className="dropdown-item" to="#">All</Link></li>
+            <li>15 KM/Hour</li>
+            <li>12 KM/Hour</li>
+            <li>All</li>
           </ul>
         </div>
       </div>
@@ -139,8 +121,8 @@ function Ordercar() {
                   <img className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" style={{width:"250px",height:"166px"}}/>
                   <div className="card-body">
                     <div>
-                      <span className="card-title" >{d.name}</span>
-                      <span className='button'>{d.pricePerKm}/ Km</span></div>
+                      <span className="card-title" style={{fontWeight:"bold",fontSize:"large"}} >{d.name}</span>
+                      <span className='button' style={{color:"green",fontWeight:"bold"}}>{d.pricePerKm} ₹/Km</span></div>
                     <div className='mt-2 '>
                       <span className='pl-4'>Fare Details</span>
                       <button type="button" className=" button btn btn-primary" onClick={() => bookNow(d)}>Book Now</button>

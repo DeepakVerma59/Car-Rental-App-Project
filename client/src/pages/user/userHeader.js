@@ -11,13 +11,12 @@ const UserHeader = () => {
     const [auth, setAuth] = useAuth();
 
     const handleLogout = () => {
-        setAuth({
-            user: null,
-            token: ""
-        })
-        localStorage.removeItem("auth");
+        localStorage.clear()
         toast.success("logout successful")  
         navigate("/")
+        // function preventBack() { window.history.forward(); }
+        // setTimeout(preventBack(), 0);
+        // window.onunload = function () { null };
      }
      const handleMyBooking=()=>{
         navigate("/user-bookings/:id")
@@ -25,12 +24,12 @@ const UserHeader = () => {
 
     return (
         <>
-            <nav className="navbar navbar-light bg-light">
+            <nav className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
                 <div className="container-fluid">
-                    <Link to="/" className="navbar-brand"><AiFillCar size={40}/></Link>
+                    <Link to="/" className="navbar-brand"><AiFillCar size={30}/></Link>
                     <form className="d-flex px-5">
-                        <button className="btn mx-4 btn-outline-success" type="submit" onClick={handleMyBooking}>My Bookings</button>
-                        <button className="btn btn-outline-success" type="submit" onClick={handleLogout}>Logout</button>
+                        <button className="btn mx-4 btn-success" type="submit" onClick={handleMyBooking}>My Bookings</button>
+                        <button className="btn btn-success" type="submit" onClick={handleLogout}>Logout</button>
                     </form>
                 </div>
             </nav>

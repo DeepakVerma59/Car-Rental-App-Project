@@ -1,22 +1,22 @@
 //page 1
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../styles/login.css"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useAuth } from "../../context-api/auth-context";
 import toast from "react-hot-toast"
 import Home from './Home';
 
 function Login() {
-
-
     const navigate = useNavigate()
     const [auth, setAuth] = useAuth()
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loader,setLoader] = useState(false)
 
     const submitSignin = async (e) => {
         e.preventDefault();
+        setLoader(true);
         //  console.log(name,email,password,phone,address)
         try {
             const res = await axios.post(`${process.env.REACT_APP_PORT}/login`, {
@@ -42,6 +42,10 @@ function Login() {
             toast.error("something went wrong")
         }
     }
+
+    window.onpopstate = () => {
+        navigate("/");
+      }
 
     return (
         <>
@@ -81,7 +85,7 @@ function Login() {
                 <label>Password</label><br/>
                 <input type='password' value={password} onChange={e=>{setPassword(e.target.value)}} placeholder='Password'/><br/>
                 <a id="forgot-password" href="/forgot-password">Forgot Password</a><br/><br/>
-                <Link to='/Register'><button id="create-account" >Create Account</button></Link>
+                <Link to="/register"><button id="create-account" >Create Account</button></Link>
                 <button id="sign-in" type='submit'>Sign IN</button>
             </form>
         </div>

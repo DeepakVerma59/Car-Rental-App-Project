@@ -16,15 +16,15 @@ const Header = () => {
         })
         localStorage.removeItem("auth");
         toast.success("logout successful")
-         navigate("/")
+         navigate("/admin-login")
      }
     return (
         <>
-            <nav className="navbar navbar-light bg-light">
+            <nav className="navbar navbar-primary bg-info">
                 <div className="container-fluid">
-                    <Link to="/admin-homepage" className="navbar-brand"><AiFillCar/></Link>
+                    <Link to="/admin-homepage" className="navbar-brand"><AiFillCar size={50}/></Link>
                     <form className="d-flex px-5">
-                        <button className="btn btn-outline-success" type="submit" onClick={handleLogout}>Logout</button>
+                        <button className="btn btn-success" type="submit" onClick={handleLogout}>Logout</button>
                     </form>
                 </div>
             </nav>

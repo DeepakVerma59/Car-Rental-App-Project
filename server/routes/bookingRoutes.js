@@ -9,7 +9,7 @@ const {createBookingController,updateBookingController,getBookingController,getS
 route.post("/create-booking",requireSignin,formidable(),createBookingController);
 
 //update product
-route.put("/update-booking/:pid",requireSignin,formidable(),updateBookingController);
+route.put("/update-booking/:pid",requireSignin,updateBookingController);
 
 //get products
 route.get("/get-booking",getBookingController);

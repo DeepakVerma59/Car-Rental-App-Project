@@ -13,10 +13,12 @@ function AdminLogin() {
     const navigate = useNavigate()
     const [auth, setAuth] = useAuth()
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState("")
+    const [loader , setLoader] = useState(false)
 
     const submitSignin = async (e) => {
         e.preventDefault();
+        setLoader(true);
         //  console.log(name,email,password,phone,address)
         try {
             const res = await axios.post(`${process.env.REACT_APP_PORT}/admin-login`, {
@@ -42,6 +44,10 @@ function AdminLogin() {
             toast.error("something went wrong")
         }
     }
+
+    window.onpopstate = () => {
+        navigate("/admin-login");
+      }
 
     return (
         <>
@@ -80,9 +86,9 @@ function AdminLogin() {
                 <input type='text' value={email} onChange={e=>{setEmail(e.target.value)}} placeholder='Email'/><br/>
                 <label>Password</label><br/>
                 <input type='password' value={password} onChange={e=>{setPassword(e.target.value)}} placeholder='Password'/><br/>
-                <a id="forgot-password" href="/forgot-password">Forgot Password</a><br/><br/>
-                <Link to='/Register'><button id="create-account" >Create Account</button></Link>
-                <button id="sign-in" type='submit'>Sign IN</button>
+                <Link to="/admin-forgotpassword" style={{textDecoration:"none"}}><span>Forgot Password</span></Link><br/>
+                <Link to='/'><button id="create-account" className='mt-4' >Create Account</button></Link>
+                <button id="sign-in" type='submit'>{loader?<div id= "spinner"></div> :"SIGN IN"}</button>
             </form>
         </div>
         </div>

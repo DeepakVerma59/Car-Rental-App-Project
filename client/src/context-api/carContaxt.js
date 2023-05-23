@@ -1,11 +1,10 @@
-import { useState,useContext,createContext } from "react";
+import { useState,useContext,createContext,useEffect } from "react";
 
 const carContext = createContext();
 
  const CarHeaderProvider = ({children})=>{
   
   const [orderHeader,setOrderHeader] = useState({
-
    startDate:"",
    endDate:"",
    origin:"",
@@ -13,8 +12,40 @@ const carContext = createContext();
    bookingDate:"",
    bookingTime:""
   })
-  const [carData, setCarData] = useState({});
 
+  useEffect(()=>{
+    let data = localStorage.getItem("order");
+    if(data){
+     const parsedData = JSON.parse(data);
+     setOrderHeader({
+         startDate:parsedData.startDate,
+         endDate:parsedData.endDate,
+         origin:parsedData.origin,
+         destination:parsedData.destination
+     })
+   }
+   },[])
+
+  const [carData, setCarData] = useState({
+    name:"",
+    adminId:"",
+    _id:"",
+    pricePerKm:""
+  });
+
+  useEffect(()=>{
+    let data = localStorage.getItem("cardata");
+    if(data){
+      const parsedData = JSON.parse(data);
+      setCarData({
+        ...carData,
+         name:parsedData.name,
+         adminId:parsedData.adminId,
+         _id:parsedData._id,
+         pricePerKm:parsedData.pricePerKm
+      })
+    }
+  },[])
 
 
 

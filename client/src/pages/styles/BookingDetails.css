@@ -31,3 +31,13 @@
     background-color:rgb(244, 242, 242);
     padding: 20px;
 }
+
+.car-img{
+    position: absolute;
+    right:0px;
+    bottom:-24px;
+}
+
+.car-container{
+    position: relative;
+}

@@ -25,4 +25,10 @@
   .pin-text {
     font-size: 1.3em;
   }
-  
+   #map{
+    position: absolute;
+    right: 0px;
+    bottom: 15px;
+    width: 15vw;
+    height: 20vh 
+   }

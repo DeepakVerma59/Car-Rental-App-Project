@@ -7,7 +7,7 @@ import { useAuth } from "../../context-api/auth-context";
 import toast from "react-hot-toast"
 import Home from './Home';
 
-function Login() {
+function AdminLogin() {
 
 
     const navigate = useNavigate()
@@ -19,7 +19,7 @@ function Login() {
         e.preventDefault();
         //  console.log(name,email,password,phone,address)
         try {
-            const res = await axios.post(`${process.env.REACT_APP_PORT}/login`, {
+            const res = await axios.post(`${process.env.REACT_APP_PORT}/admin-login`, {
                 email, password
             });
             if (res.data.success) {
@@ -31,7 +31,7 @@ function Login() {
                     token: res.data.token
                 })
                 localStorage.setItem("auth", JSON.stringify(res.data));
-                navigate("/user-bookingcheck")
+                navigate("/admin-homepage")
             }
             else {
                 toast.error(res.data.message);
@@ -75,7 +75,7 @@ function Login() {
         </div>
         <div className="col-md-5 div-2">
             <form method='post' onSubmit={submitSignin}>
-                <h3 id='sign-in-div'> User Sign In </h3><br/>
+                <h3 id='sign-in-div'> admin Sign In </h3><br/>
                 <label>Email</label><br/>
                 <input type='text' value={email} onChange={e=>{setEmail(e.target.value)}} placeholder='Email'/><br/>
                 <label>Password</label><br/>
@@ -91,4 +91,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default AdminLogin;

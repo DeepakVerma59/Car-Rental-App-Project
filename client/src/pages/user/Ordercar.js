@@ -60,6 +60,7 @@ function Ordercar() {
 
 
   const bookNow = (data) => {
+    console.log(data.photo)
     setCarData(data);
     navigate("/user-bookingconfirm")
   }
@@ -127,15 +128,15 @@ function Ordercar() {
           </ul>
         </div>
       </div>
-
-      <div className='d-flex flex-wrap ' style={{marginLeft:"90px"}}>
-      {
+      
+        <div className='d-flex flex-wrap' style={{marginLeft:"90px"}}>
+          {
         data.map(d => (
-          <div key={d._id} className='carmodel'>
+          <div key={d._id}>
             <div className="row m-3">
               <div className="col">
                 <div className="card">
-                  <img style={{width:"250px" ,height:"166px"}} className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" />
+                  <img className="card-img-top" src={`${process.env.REACT_APP_PORT}/get-photo/${d._id}`} alt="car" style={{width:"250px",height:"166px"}}/>
                   <div className="card-body">
                     <div>
                       <span className="card-title" >{d.name}</span>
@@ -149,10 +150,8 @@ function Ordercar() {
               </div>
             </div>
           </div>
-
-        ))
-        
-        }</div>
+        ))}
+  </div>
     </>
   )
 }

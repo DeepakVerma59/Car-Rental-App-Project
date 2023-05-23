@@ -1,0 +1,8 @@
+.bg-light {
+    --bs-bg-opacity: 1;
+    background: none;
+}
+
+.navbar navbar-light bg-light{
+        
+}

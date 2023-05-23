@@ -1,6 +1,10 @@
 const mongoose=require("mongoose")
 
 const carSchema = mongoose.Schema({
+
+    adminId:{
+     type:String
+    },
     name:{
         type:String,
         required:true

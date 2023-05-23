@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const createProductController = async(req,res)=>{
     try{
-     const {name,number,type,model,mileage,availableFrom,availableTill,pricePerKm,description,carDetails,Details,slug} = req.fields;
+     const {adminId,name,number,type,model,mileage,availableFrom,availableTill,pricePerKm,description,carDetails,Details} = req.fields;
      const {photo} = req.files;
     
      if(!name){res.status(500).send({error:"name is required"})};
@@ -44,7 +44,7 @@ const createProductController = async(req,res)=>{
 
     const updateProductController = async(req,res)=>{
         try{
-            const {name,type,model,mileage,availableFrom,availableTill,pricePerKm,description,carDetails,Details,slug} = req.fields;
+            const {adminId,name,type,model,mileage,availableFrom,availableTill,pricePerKm,description,carDetails,Details,slug} = req.fields;
             const {photo} = req.files;
             const {pid} = req.params
            

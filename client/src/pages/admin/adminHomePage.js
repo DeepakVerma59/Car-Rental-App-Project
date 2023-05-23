@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react'
 import Header from './Header'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../context-api/auth-context'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import "../styles/adminhome.css"
 
 const AdminHomePage = () => {
 
+  const [auth,setAuth] = useAuth()
   const [products, setProducts] = useState([])
 
   const getAllProducts = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_PORT}/get-product`);
-      setProducts(res.data.products)
+      const filteredData = res.data.products.filter(item=>auth?.user.id==item.adminId)
+      setProducts(filteredData)
     }
     catch (err) {
       console.log(err);
@@ -28,8 +31,7 @@ const AdminHomePage = () => {
     <>
       <Header />
       <div className='main allbg'>
-        <h1>Hello Admin....</h1>
-        <br />
+      <h1> Welcome </h1>
         <div className="car" style={{fontWeight:"bold"}}>Cars</div>
         <Link to="/admin-addproducts">
           <button type="button" className=" button btn btn-primary">Add Cars</button></Link>

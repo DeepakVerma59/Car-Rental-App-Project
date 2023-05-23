@@ -1,0 +1,11 @@
+
+.main-div{
+    margin-left: 50px !important;
+}
+li{
+    cursor: pointer;
+}
+li:hover{
+    color:black;
+    font-weight: bold;
+}

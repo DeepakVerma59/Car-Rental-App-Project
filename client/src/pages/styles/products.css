@@ -1,0 +1,41 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.label-padding1{
+    padding-left: 405px;
+}
+.label-padding2{
+    padding-left: 385px;
+}
+.label-padding3{
+    padding-left: 350px;
+}
+.form-select{
+    width:40%;
+    display: inline-block;
+}
+.box-margin{
+    margin-left: 90px;
+}
+.form-control{
+    width:40%;
+    display: inline-block; 
+}
+.textarea{
+    width:500px;
+    height: 150px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.textarea1{
+    width:500px;
+    height: 125px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.allbg{
+    background-color:rgb(244, 242, 242);
+    padding: 20px;
+}

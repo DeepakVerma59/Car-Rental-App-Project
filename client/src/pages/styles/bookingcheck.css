@@ -1,0 +1,49 @@
+.nav-right{
+    float :right;
+}
+.booking-check-div{
+        background-image: url("https://www.cargini.rent/data/public/rotator/cargini-homepage.png");
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-attachment: fixed;
+        min-height: 100%;
+        width: 100vw;
+        height:100vh
+    }
+
+.nav-button{
+    margin-top: 5px;
+    margin-right: 10px;
+    background: none;
+    border: none;
+    color: blue;
+   
+}
+
+#check{
+    border: none;
+    background-color: #7688f5;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 200px;
+
+
+}
+.check-form{
+    background-color: white;
+    position: fixed;
+    margin-top: 70px;
+    width: 320px;
+    height: 450px;
+    border-radius: 25px;
+    padding: 20px;
+    margin-left: 120px;
+
+}
+.input-bookings{
+    width: 150px;
+}
+.bg{
+    background-color:rgb(217, 215, 215);
+    padding: 20px;
+}

@@ -1,0 +1,45 @@
+
+.car{
+    float: left;
+    font-size: larger;
+}
+.button{
+    float: right;
+}
+.main {
+    margin: 2em;
+}
+.card-img-top{
+    width: auto;
+}
+.span{
+    padding-left: 20px;
+}
+.head{
+    display: flex;
+    flex-direction: row;
+}
+.dropdown{
+    margin: 4px;
+   
+}
+.dropdown button{
+    margin-left: 10px;
+}
+.carmodel{
+    display: flex;
+    flex-direction: row
+}
+.allbg{
+    background-color:rgb(244, 242, 242);
+    padding: 20px; 
+}
+.card{
+    box-shadow: 6px 6px 6px 6px #00000029;
+opacity: 1;
+
+}
+
+
+
+

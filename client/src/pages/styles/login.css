@@ -1,0 +1,165 @@
+
+.main-container{
+    background-image: url("./images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    min-height: 100%;
+    width: 100vw;
+    height:100vh
+}
+
+.anchor-link a {
+    margin-right: 20px;
+
+}
+.div-1{
+  
+    font-size: 30px;
+    font-weight: 1000;
+    color: rgb(0, 153, 255);
+    margin-left: 250px;
+    margin-top: 10px;
+}
+a{
+    margin-right: 20px;
+    color: rgb(79, 78, 195);
+}
+label{
+    font-weight: bolder;
+    font-size: 12px;
+}
+
+img, svg{
+    margin: 10px;
+}
+
+.div-2{
+    background-color: rgb(235, 245, 190);
+   
+    position: fixed;
+    right: 0;
+    width: 280px;
+    height: 320px;
+    border-radius: 25px;
+    padding: 20px;
+    margin-right: 90px;
+}
+.div-2-register{
+    background-color: rgb(251, 228, 209);
+    position: fixed;
+    right: 0;
+    width: 280px;
+    height: 480px;
+    border-radius: 25px;
+    padding: 20px;
+    margin-right: 90px;
+}
+input{
+    padding: 5px;
+    margin: 5px;
+}
+#forgot-password{
+    font-size: 12px;
+    position: absolute;
+    right: 38px;
+    margin: 5px;
+}
+
+h3{
+    font-size: 17px;
+}
+
+#create-account{
+    margin-right: 20px;
+    border: none;
+    color: blue;
+    background-color: white;
+    font-size: 15px;
+    font-weight: bold;
+} 
+
+#sign-in{
+    background-color: rgb(100 100 255);
+    border-radius: 5px;
+    padding: 0px;
+    height: 30px;
+    width: 70px;
+}
+.sign-in{
+    border: none;
+    color: blue;
+    background-color: white;
+}
+.register{
+    float: right;
+    border-radius: 6px;
+    background-color: rgb(23, 77, 239);
+ 
+}
+.heading {
+    
+    background-color: rgb(249, 168, 47);
+    width: max-content;
+   padding: 20px;
+   margin: auto;
+
+}
+.wrapper.one {
+   
+}
+.drop-main {
+    display: flex;
+    font-size: 7rem;
+    margin: 1.5rem;
+    justify-content: center;
+    font-family: "Russo One", sans-serif;
+    font-size:xx-large;
+}
+.d {
+    opacity: 0;
+    animation: drop 0.4s linear forwards;
+    color: #0e0e0e;
+}
+.r {
+    opacity: 0;
+    animation: drop 0.4s linear forwards 0.2s;
+    color: #141515;
+}
+.o {
+    opacity: 0;
+    animation: drop 0.4s linear forwards 0.4s;
+    color: #141515;
+}
+.p {
+    opacity: 0;
+    animation: drop 0.4s linear forwards 0.6s;
+    color: #0c0c0c;
+}
+.s {
+    opacity: 0;
+    animation: drop 0.4s linear forwards 0.8s;
+    color: #141313;
+}
+@keyframes drop {
+    0% {
+        transform: translateY(-200px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    65% {
+        transform: translateY(-17px);
+        opacity: 1;
+    }
+    75% {
+        transform: translateY(-22px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
